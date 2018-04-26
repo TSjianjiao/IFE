@@ -1,0 +1,19 @@
+body{
+    background: #AEEEEE
+}
+h1{
+    font: italic 60px/60px micorsoft yahei;
+    color: black;
+    text-align: center;
+    text-shadow: 2px 2px 2px #000;
+}
+ul, li{
+    list-style: none;
+    text-align: center;
+}
+[list_name="zhangsan"]{
+    color: red;
+}
+ul li a{
+    text-decoration: none;
+}
