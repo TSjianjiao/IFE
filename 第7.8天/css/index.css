@@ -1,0 +1,143 @@
+body,
+ul,
+p {
+    margin: 0;
+    padding: 0;
+    font: 11px "micorsoft yahei";
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+/* 版心 */
+.w {
+    width: 958px;
+    margin: 0 auto;
+}
+/* 顶部导航栏部分 */
+.bander {
+    height: 80px;
+    background-color: #333333;
+}
+.logo {
+    float: left;
+    height: 80px;
+    font: 500 27px/80px "micorsoft yahei";
+    color: #fff;
+}
+.login {
+    float: right;
+    margin-top: 11px;
+}
+.login
+li {
+    float: left;
+}
+.login
+a {
+    margin-left: 10px;
+    text-decoration: underline;
+    color: #fff;
+}
+/* 轮播图部分 */
+.carousel {
+    position: relative;
+    height: 300px;
+    background-color: #66BB33;
+}
+.carousel 
+ul {
+    position: absolute;   
+    bottom: 10px;
+    right: 183px;
+}
+.carousel 
+li {
+    float: left;
+    border: solid 1px #000;
+    background-color: #fff;
+    opacity: 0.5;
+    margin-left: 5px;
+    padding: 11px;
+}
+.carousel 
+li:hover {
+    padding-bottom: 26px;
+    opacity: 1;
+    cursor: pointer;
+}
+/* nav部分 */
+.nav {
+    height: 70px;
+    border-bottom: solid 1px #ddd;
+}
+.nav
+li {
+    float: left;
+    margin-top: 23px;
+    padding: 21px 31px 11px;
+    border: solid 1px #ddd;
+    border-radius: 30% 30% 0 0;
+    background-color: #eee;
+}
+.nav
+li:hover {
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+}
+/* 内容部分 */
+.content {
+    display: flex;
+    width: 71%;/*958px/1349px*/
+    margin-left: 196px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.first,
+.second,
+.last {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 0;
+}
+.first div:nth-child(1),
+.first div:nth-child(2){
+    flex: 2;
+}
+.second 
+div {
+    flex: 1;
+}
+.last div:nth-child(1),
+.last div:nth-child(2){
+    flex: 2;
+}
+.first div,
+.second div,
+.last div {
+    height: 12px;
+    margin-right: 10px;
+    padding: 80px;
+    border: solid 1px #ccc;
+    font: 20px/12px "micorsoft yahei";
+    text-align: center;
+}
+
+/* footer部分 */
+.footer {
+    height: 100px;
+    padding-top: 20px;
+    background-color: #666;
+}
+.footer
+.copyright {
+    width: 144px;
+    margin:0 auto;
+    font-size: 11px;
+    color: #fff;
+}
