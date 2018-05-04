@@ -1,0 +1,749 @@
+/* 初始化 */
+@charset "UTF-8";
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+    margin: 0;
+    padding: 0;
+}
+/* 引用字体 */
+@font-face {
+    font-family: 'montserrat extralight';
+    src: url(../montserrat-extralight.woff2-webfont.woff2) format('woff2'),  
+         url(../montserrat-extralight.woff2-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body,
+input,
+button {
+    font: 12px 'montserrat extralight', sans-serif;
+    color: #fff;
+}
+fieldset, 
+img, 
+input, 
+button { 			/*fieldset组合表单中的相关元素*/
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+ul, 
+ol {
+    list-style: none;				/*清除列表风格*/
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+select, 
+input {
+    vertical-align: middle;
+}
+
+select, 
+input, 
+textarea {
+    font-size: 12px;
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+/*防止多行文本框拖动*/
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/*  去掉图片低测默认的3像素空白缝隙*/
+table {
+    border-collapse: collapse;			/*合并外边线*/
+}
+/* 清除浮动 */
+.clearfix:before, 
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1; /*IE/7/6*/
+}
+s
+a {
+    color: #666;
+    text-decoration: none;
+}
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s, 
+i, 
+em {				
+    font-style: normal;
+    text-decoration: none;
+}
+
+/*公共类*/
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+/* 第一页 */
+.first-page {
+    width: 972px;
+    height: 573px;
+    margin: 0 auto;
+    padding: 207px 314px 210px;
+    background: url(../images/IFE_0020_Background.png);
+}
+.first-page .title-text {
+    margin: 0 auto;
+    width: 971px;
+    height: 219px;
+    text-align: center;
+    font-size: 20px
+}
+.title-text .title-text-main {
+    font-size: 62px;
+    width: 774px;
+    margin: 0 auto;
+}
+.title-text .title-text-sub {
+    margin: 85px auto;
+    width: 750px;
+    height: 90px;
+    opacity: .7;
+} 
+.sign-up {
+    margin-top: 99px;
+    padding: 60px 102px 51px 99px;
+    width: 769px;
+    height: 139px;
+    border: solid 1px #5A534D;
+    border-radius: 3%;
+    background-color: rgba(0, 0, 0, .2)
+}
+.sign-up-title {
+    text-align: center;
+    font-size: 12px;
+}
+.sign-up-title-sub {
+    margin-top: 16px;
+    opacity: .3;
+}
+.sign-box {
+    margin-top: 43px;
+}
+.sign-up input{
+    padding-left: 22px;
+    width: 270px;
+    height: 50px;
+    border: solid 1px #5A534D;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 3%;
+}
+.sign-up input[type="text"] {
+    opacity: .5;
+}
+.sign-up button {
+    vertical-align: bottom;
+    width: 125px;
+    height: 50px;
+    border-radius: 3%;
+    background-color: #fff;
+    color: #000;
+}
+.sign-up button:hover {
+    cursor: pointer;
+}
+/* 第二页 */
+.second-page {
+    /* width: 1600px; */
+    width: 1031px;
+    height: 505px;
+    border-bottom: solid 1px #EAEAEA; 
+    padding: 87px 292px 117px 277px;
+    margin: 0 auto;
+    color: #000;
+}
+.second-page .introduction-title {
+    position: relative;
+    height: 145px;
+}
+.introduction-title .main {
+    position: absolute;  
+    bottom: 0;
+    left: 137px;
+    width: 775px;
+    height: 86px;
+    font-size: 42px;
+    text-align: center;
+}
+.introduction-title .sub {
+    width: 227px;
+    margin: 0 auto;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 600;
+}
+.introduction-detail{
+    margin-top: 85px;
+}
+.mobile-first,
+.accessibility,
+.fluid-typography,
+.customization {
+    height: 74px;
+}
+.introduction-detail div[class="img"] 
+{
+    float: left;
+    margin-right: 25px;
+    height: 74px;
+}
+.introduction-detail p {
+    font-size: 16px;
+}
+.introduction-detail p[class="main"] {
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.introduction-detail p[class="sub"] {
+    float: left;
+    line-height: 25px;
+    opacity: .7;
+}
+.top-column {
+    height: 74px;
+}
+.mobile-first {
+    float: left;
+    padding-left: 15px;
+    width: 594px;
+}
+.accessibility {
+    float: left;
+    padding-left: 7px;
+    width: 414px;
+}
+.bottom-column {
+    height: 74px;
+    margin-top: 81px;
+}
+.fluid-typography {
+    float: left;
+    width: 600px;
+}
+.customization {
+    float: left;
+    width: 429px;
+}
+/* 第三页 */
+.third-page {
+    margin: 0 auto;
+    width: 1600px;
+    height: 800px;
+    background: url(../images/IFE_0012_Screen.png)
+}
+.third-title {
+    position: relative;
+    left: 315px;
+    top: 184px;
+    width: 505px;
+    height: 432px;
+}
+.third-title .main {
+    font-size: 42px;
+}
+.third-title .sub {
+    margin-top: 46px;
+    height: 131px;
+    font-size: 18px;
+    line-height: 28px;
+    opacity: .7;
+}
+.third-title-button {
+    height: 60px;
+    margin-top: 58px;
+}
+.third-title-button button {
+    height: 60px;
+    width: 240px;
+    font-size: 15px;
+    /* font-weight: 600; */
+    line-height: 60px;
+    text-align: center;
+}
+.third-title-button button:hover {
+    cursor: pointer;
+}
+.third-title-button .left {
+    float: left;
+    border: solid 1px #5A534D;
+    color: #000;
+}
+.third-title-button .right {
+    float: right;
+    border: solid 1px #5A534D;
+    background-color: rgba(0, 0, 0, .2);
+}
+/* 第四页 */
+.fourth-page {
+    width: 1600px;
+    height: 500px;
+    padding-bottom: 78px;
+    border-bottom: solid 1px #EAEAEA;
+    margin: 0 auto;
+    color: #000;
+}
+.fourth-title {
+    margin: 0 auto;
+    padding-top: 101px;
+    width: 609px;
+    font-size: 42px;
+    text-align: center;
+}
+.product-detail {  
+    height: 275px;
+    width: 954px;
+    padding-top: 77px; 
+    margin: 0 auto;
+    text-align: center;
+}
+.product-detail p {
+    font-size: 16px;
+    line-height: 29px;
+    opacity: .7;
+}
+
+.product-detail .img {
+    height: 39px;
+}
+.product-detail .img img{
+    margin: 0 auto;
+}
+.singleton {
+    float: left;
+    width: 273px;
+    margin-right: 79px;
+}
+.hero {
+    float: left;
+    width: 273px;
+}
+.portland {
+    float: right;
+    width: 273px;
+}
+/* 第五页 */
+.fifth-page {
+    width: 1030px;
+    height: 780px;
+    padding: 114px 315px 105px 255px;
+    border-bottom: solid 1px #EAEAEA;
+    margin: 0 auto;
+    color: #000;
+}
+.fifth-page p[class="main"]{
+    width: 325px;
+    margin-bottom: 32px;
+    font-size: 18px;
+    line-height: 37px;
+    word-spacing: 1px;
+    font-weight: 600;
+}
+.fifth-page p[class="sub"] {
+    width: 306px;
+    font-size: 16px;
+    line-height: 27px;
+    opacity: .7;
+}
+.t-box {
+    height: 349px;
+    margin-bottom: 80px;
+}
+.t-box .text {
+    margin-top: 78px;
+}
+.b-box .text {
+    margin-top: 72px;
+}
+.t-box .img,
+.b-box .text{
+    float: left;
+}
+.t-box .text,
+.b-box .img{
+    float: right;
+}
+/* 第六页 */
+.sixth-page {
+    width: 971px;
+    height: 886px;
+    padding: 97px 314px 100px 315px;
+    border-bottom: solid 1px #EAEAEA;
+    margin: 0 auto;
+    color: #000;
+}
+.sixth-title {
+    width: 705px;
+    margin: 0 auto;
+    margin-bottom: 59px;
+    text-align: center;
+}
+.sixth-title .main {
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 34px;
+    font-weight: 600;
+    font-size: 40px
+}
+.sixth-title .sub {
+    width: 704px;
+    margin: 0 auto;
+    font-size: 18px;
+    opacity: .7;
+}
+.figures {
+    position: relative;
+    width: 971px;
+    height: 710px;
+}
+.figures>div:nth-of-type(2n) {
+    position: absolute;
+    width: 470px;
+    height: 340px;
+    border-left: solid 1px #A8A8A8;
+    border-right: solid 1px #A8A8A8;
+    border-radius: 1%;
+    z-index: 999999;
+}
+
+/*图片盒子和mask盒子都要设置同一张底片，不然显示
+mask盒子的时候就只有个mask没有图片*/
+.img-one,
+.mask-one {
+    top: 0;
+    left: 0;
+    margin-bottom: 31px;
+    background: url(../images/IFE_0006_张思远大.png);
+}
+
+.img-two,
+.mask-two {
+    left: 500px;
+    top: 0;
+    margin-bottom: 31px;
+    background: url(../images/IFE_0007_2.png);
+}
+.img-three,
+.mask-three {
+    left: 0px;
+    top: 371px;
+    background: url(../images/IFE_0008_3.png);
+}
+.img-four,
+.mask-four {
+    left: 500px;
+    top: 371px;
+    background: url(../images/IFE_0009_沈大师大_meitu_3.png);
+}
+.figures>div:nth-of-type(2n+1) {
+    position: absolute;
+    width: 217px;
+    height: 139px;
+    padding: 110px 128px 91px 128px ;
+    background: rgba(19, 19, 19, .65);
+    border-radius: 1%;
+    z-index: 1;
+}
+.mask-title {
+    color: #fff;
+} 
+.mask-title {
+    height: 46px;
+    margin-bottom: 39px;
+    text-align: center;
+}
+.mask-title .main {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.mask-title .sub {
+    opacity: .4;
+}
+.contact li:nth-of-type(1) a {
+    float: left;
+    margin-right: 29px;
+    width: 51px;
+    height: 54px;
+    border-radius: 50%;
+    background: url(../images/IFE_0001_Facebook-Icon.png) 
+                rgba(228, 228, 228, .2) no-repeat center;
+}
+.contact li:nth-of-type(2) a {
+    float: left;
+    margin-right: 29px;
+    width: 51px;
+    height: 54px;
+    border-radius: 50%;
+    background: url(../images/IFE_0000_Twitter-Icon.png) 
+                rgba(228, 228, 228, .2) no-repeat center;
+}
+.contact li:nth-of-type(3) a {
+    float: left;
+    width: 51px;
+    height: 54px;
+    border-radius: 50%;
+    background: url(../images/IFE_0001_Instagram-Icon.png) 
+                rgba(228, 228, 228, .2) no-repeat center;
+}
+/*一定要放两个hover不然会出现两个重叠的盒子
+不停来回切换（速度很快虽然看不见，我猜测的）
+导致不能正常覆盖，所以当第一次鼠标放置在图片盒子
+上时触发hover改变层叠顺序，此时当切换到mask盒子，
+因为已经切换到mask的盒子所以要再对mask盒子hover一次，
+确保层叠顺序正确*/
+
+/* figure 下的偶数div标签 */
+/* 第一次hover */
+.figures div:nth-of-type(2n):hover {
+    z-index: 0;
+}
+.figures div:nth-of-type(2n+1):hover {
+    z-index: 1999999;
+    /*这里是第二次hover，设置101是为了超过之前
+    设置的图片盒子的层叠顺序，不是超过第一次
+    hover设置的层叠顺序*/
+}
+/* 第七页 */
+.seventh-page {
+    width: 959px;
+    height: 560px;
+    padding: 70px 326px 69px 315px;
+    margin: 0 auto;
+    border-bottom: solid 1px #EAEAEA;
+    color: #000;
+}
+.write-us {
+    float: left;
+    width: 370px;
+    height: 453px;
+    padding: 50px 49px 57px 51px;
+    background-color: rgba(19, 19,19, .1);
+    border-radius: 2%;
+}
+.write-us-title {
+    margin-bottom: 45px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center; 
+    letter-spacing: 1px;
+}
+.write-us input {
+    width: 350px;
+    height: 50px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    border-radius: 1%;
+    color: #6D707E;
+    font-weight: 600;
+}
+.write-us input:nth-of-type(1) {
+    background-color: rgba(59, 85, 229, .2);
+}
+.write-us input:nth-of-type(2) {
+    background-color: rgba(255, 255,255, .2);
+}
+.write-us textarea {
+    width: 350px;
+    height: 124px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    border: 0 none;
+    border-radius: 1%;
+    background-color: rgba(59, 85, 229, .2);
+    overflow: auto;
+    color: #6D707E;
+    font-size: 13px;
+    font-weight: 600;
+}
+.write-us button {
+    width: 370px;
+    height: 50px;    
+    border-radius: 1%;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: #131313;
+}
+.contact-us {
+    float: right;
+    width: 357px;
+    height: 359px;
+    padding: 86px 0px 115px 0px;
+}
+.contact-us-main {
+    margin-bottom: 38px;
+    font-size: 42px;
+}
+.contact-us-sub {
+    margin-bottom: 66px;
+    font-size: 16px;
+    opacity: .7;
+}
+.contact-us .address {
+    margin-bottom: 37px;
+}
+.address .img {
+    float: left;
+    height: 39px;
+    width: 26px;
+    margin-right: 16px;
+    background: url(../images/IFE_0005_Map-Icon.png) no-repeat center;
+}
+.address p:nth-of-type(1) {
+    margin-bottom: 10px;
+}
+.contact-us .tel {
+    height: 24px;
+    margin-bottom: 30px;
+}
+.tel .img {
+    float: left;
+    height: 24px;
+    width: 26px;
+    margin-right: 16px;
+    background: url(../images/IFE_0004_Phone-Icon.png) no-repeat center;
+}
+
+.contact-us .email {
+    height: 20px;
+}
+.email .img {
+    float: left;
+    height: 20px;
+    width: 26px;
+    margin-right: 16px;
+    background: url(../images/IFE_0003_Mail-Icon.png) no-repeat center;
+}
+/* footer */
+.footer-part {
+    width: 1158px;
+    height: 197px;
+    margin: 0 auto;
+    padding: 90px 226px 124px 216px;
+    background-color: #131313;
+}
+.footer-part dt {
+    letter-spacing: 1px;
+    font-size: 15px;
+    /* font-weight: 600; */
+}
+.footer-part a,
+.footer-part dl:nth-of-type(4) dd {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    opacity: .3;
+}
+a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+/* 字体和设计图差点.. */
+.footer-part dd:nth-of-type(1) {
+    margin-top: 30px;
+}
+.footer-part>dl dd {
+    margin-top: 27px;
+}
+/* 始终看起来没对齐一样...
+但是元素审查又是对齐的 */
+.footer-part dl:nth-of-type(1) {
+    float: left;
+    width: 297px;
+    height: 197px;
+}
+.footer-part dl:nth-of-type(2) {
+    float: left;
+    width: 302px;
+    height: 197px;
+}
+.footer-part dl:nth-of-type(3) {
+    float: left;
+    width: 260px;
+    height: 197px;
+}
+.footer-part dl:nth-of-type(4) {
+    float: right;
+}
+.footer-part dl:nth-of-type(4) dd {
+    margin-bottom: 44px;
+}
+.footer-part .link-icons {
+    height: 71px;
+}
+.link-icons li:nth-of-type(1) a {
+    float: left;
+    width: 17px;
+    height: 18px;
+    margin-right: 27px;
+    background: url(../images/IFE_0000_Twitter-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(2) a {
+    float: left;
+    width: 9px;
+    height: 18px;
+    margin-right: 24px;
+    background: url(../images/IFE_0001_Facebook-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(3) a {
+    float: left;
+    width: 24px;
+    height: 18px;
+    margin-right: 24px;
+    background: url(../images/IFE_0002_Google-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(4) a {
+    float: left;
+    width: 10px;
+    height: 18px;
+    margin-right: 31px;
+    background: url(../images/IFE_0021_Tumbler-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(5) a {
+    float: left;
+    width: 14px;
+    height: 18px;
+    margin-right: 26px;
+    background: url(../images/IFE_0022_Pinterest-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(6) a{
+    float: left;
+    width: 16px;
+    height: 18px;
+    background: url(../images/IFE_0023_LinkedIn-Icon.png) no-repeat center;
+}

@@ -1,0 +1,724 @@
+/* 初始化 */
+@charset "UTF-8";
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+    margin: 0;
+    padding: 0;
+}
+/* 引用字体 */
+@font-face {
+    font-family: 'montserrat extralight';
+    src: url(../montserrat-extralight.woff2-webfont.woff2) format('woff2'),  
+         url(../montserrat-extralight.woff2-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body,
+input,
+button {
+    font: 12px 'montserrat extralight', sans-serif;
+    color: #fff;
+}
+fieldset, 
+img, 
+input, 
+button { 			/*fieldset组合表单中的相关元素*/
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+ul, 
+ol {
+    list-style: none;				/*清除列表风格*/
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+select, 
+input {
+    vertical-align: middle;
+}
+
+select, 
+input, 
+textarea {
+    font-size: 12px;
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+/*防止多行文本框拖动*/
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/*  去掉图片低测默认的3像素空白缝隙*/
+table {
+    border-collapse: collapse;			/*合并外边线*/
+}
+/* 清除浮动 */
+.clearfix:before, 
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1; /*IE/7/6*/
+}
+s
+a {
+    color: #666;
+    text-decoration: none;
+}
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s, 
+i, 
+em {				
+    font-style: normal;
+    text-decoration: none;
+}
+
+/*公共类*/
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+body,
+html {
+    height: 100%;
+}
+/* 第一页 */
+.first-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100%;
+    text-align: center;
+    /* 不能设置padding */
+    background: url(../images/IFE_0020_Background.png) no-repeat center;
+}
+.first-page .title-text-main {
+    margin-top: 90px;
+    margin-bottom: 40px;
+    font-size: 62px;
+}
+.first-page .title-text-sub {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 105px;
+    opacity: .7;
+} 
+.title-text-sub p {
+    max-width: 446px;
+}
+.sign-up-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.first-page .sign-up {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 250px;
+    padding: 0px 80px;
+    border: solid 1px #5A534D;
+    border-radius: 2%;
+    background-color: rgba(0, 0, 0, .2)
+}
+.sign-up-title {
+    text-align: center;
+    font-size: 12px;
+}
+.sign-up-title-main {
+    margin-top: 59px;
+}
+.sign-up-title-sub {
+    margin-top: 20px;
+    opacity: .3;
+}
+.sign-box {
+    margin-top: 46px;
+}
+.sign-up input{
+    padding-left: 22px;
+    width: 270px;
+    height: 50px;
+    border: solid 1px #5A534D;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 3%;
+}
+.sign-up input[type="email"] {
+    margin-right: 24px;
+}
+.sign-up input[type="text"] {
+    margin-right: 24px;
+    opacity: .5;
+}
+.sign-up button {
+    vertical-align: bottom;
+    width: 125px;
+    height: 50px;
+    border-radius: 3%;
+    background-color: #fff;
+    color: #000;
+}
+.sign-up button:hover {
+    cursor: pointer;
+}
+/* 第二页 */
+.second-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    /* text-align: center; */
+    color: #000;
+}
+.second-page .introduction-title-main {
+    margin-bottom: 85px;
+    font-size: 42px;
+    text-align: center;
+}
+.introduction-title-main p {
+    max-width: 700px;
+}
+.second-page .introduction-title-sub {
+    margin-top: 87px;
+    margin-bottom: 36px;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 600;
+}
+.second-page .introduction-detail {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* max-width: 65%; */
+}
+.top-column,
+.bottom-column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.bottom-column {
+    margin-top: 81px;
+    margin-bottom: 100px;
+}
+.introduction-detail p {
+    font-size: 16px;
+}
+.introduction-detail .main {
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.introduction-detail .sub {
+    line-height: 25px;
+    opacity: .7;
+}
+.mobile-first,
+.accessibility,
+.fluid-typography,
+.customization {
+    display: flex;
+    flex-wrap: wrap;
+}
+.mobile-first,
+.fluid-typography {
+    margin-right: 167px;
+}
+
+.introduction-detail .img {
+    margin-right: 25px;
+    height: 74px;
+}
+/* 第三页 */
+.third-page {
+    display: flex;
+    flex-direction: row;
+    /* 防止ipad超出 */
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100%;
+    background: url(../images/IFE_0000_no_ipd.png)  no-repeat;
+}
+.ipad {
+    margin-top: 15px;
+    width: 525px;
+    height: 600px;
+    background: url(../images/IFE_Screen_border.png) no-repeat left;
+}
+.third-title {
+    margin-left: 200px;
+}
+.third-title .main {
+    margin-top: 110px;
+    margin-bottom: 48px;
+    font-size: 42px;
+}
+.third-title .sub {
+    margin-bottom: 59px;
+    font-size: 18px;
+    line-height: 28px;
+    opacity: .7;
+}
+.third-title-button button {
+    margin-right: 30px;
+    height: 60px;
+    width: 240px;
+    font-size: 15px;
+    line-height: 60px;
+    text-align: center;
+}
+.third-title-button button:hover {
+    cursor: pointer;
+}
+.third-title-button .left {
+    /* float: left; */
+    border: solid 1px #5A534D;
+    color: #000;
+}
+.third-title-button .right {
+    /* float: right; */
+    border: solid 1px #5A534D;
+    background-color: rgba(0, 0, 0, .2);
+}
+/* 第四页 */
+.fourth-page {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    border-bottom: solid 1px #EAEAEA;
+    text-align: center;
+    color: #000;
+}
+.fourth-title {
+    margin-top: 101px;
+    margin-bottom: 77px;
+    font-size: 42px;
+}
+.product-detail {  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 78px;
+    text-align: center;
+}
+.product-detail p {
+    font-size: 16px;
+    line-height: 29px;
+    opacity: .7;
+}
+.product-detail .img {
+    height: 39px;
+}
+.product-detail .img img{
+    margin: 0 auto;
+}
+.singleton {
+    max-width: 273px;
+}
+.hero {
+    max-width: 273px;
+}
+.portland {
+    max-width: 273px;
+    margin-right: 79px;
+}
+/* 第五页 */
+.fifth-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    border-bottom: solid 1px #EAEAEA;
+    color: #000;
+}
+.fifth-page .main {
+    font-size: 18px;
+    line-height: 37px;
+    word-spacing: 1px;
+    font-weight: 600;
+}
+.fifth-page .sub {
+    font-size: 16px;
+    line-height: 27px;
+    opacity: .7;
+}
+.t-box,
+.b-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+.t-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 114px;
+    margin-bottom: 79px;
+}
+.t-box .img {
+    margin-right: 101px;
+}
+.fifth-page .text {
+    max-width: 306px;
+}
+.b-box {
+    margin-bottom: 104px;
+}
+.b-box .img {
+    margin-left: 101px;
+    order: 1;
+}
+/* 第六页 */
+.sixth-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100%;
+    border-bottom: solid 1px #EAEAEA;
+    text-align: center;
+    color: #000;
+}
+.sixth-page .main {
+    margin-top: 97px;
+    margin-bottom: 33px;
+    font-weight: 600;
+    font-size: 40px
+}
+.sixth-page .sub {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 64px;
+    font-size: 18px;
+    opacity: .7;
+}
+.sixth-page .sub p {
+    max-width: 704px;
+}
+.figures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 100px;
+    /* min-width: ; */
+}
+.figures>div:nth-of-type(2n) {
+    width: 470px;
+    height: 340px;
+    border-left: solid 1px #A8A8A8;
+    border-right: solid 1px #A8A8A8;
+    border-radius: 1%;
+}
+.img-one,
+.mask-one {
+    margin: 0px 28px 28px 0px;
+    background: url(../images/IFE_0006_张思远大.png);
+}
+.img-two,
+.mask-two {
+    margin-bottom: 28px;
+    background: url(../images/IFE_0007_2.png);
+}
+.img-three,
+.mask-three {
+    margin-right: 28px;
+    background: url(../images/IFE_0008_3.png);
+}
+.img-four,
+.mask-four {
+    background: url(../images/IFE_0009_沈大师大_meitu_3.png);
+}
+.figures>div:nth-of-type(2n+1) {
+    display: none;
+    width: 217px;
+    height: 139px;
+    padding: 110px 128px 91px 128px ;
+    background: rgba(19, 19, 19, .65);
+    border-radius: 1%;
+}
+.mask-title {
+    color: #fff;
+} 
+.mask-title {
+    height: 46px;
+    margin-bottom: 39px;
+    text-align: center;
+}
+.mask-title .main {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.mask-title .sub {
+    opacity: .4;
+}
+.contact li:nth-of-type(1) a {
+    float: left;
+    margin-right: 29px;
+    width: 51px;
+    height: 54px;
+    border-radius: 50%;
+    background: url(../images/IFE_0001_Facebook-Icon.png) 
+                rgba(228, 228, 228, .2) no-repeat center;
+}
+.contact li:nth-of-type(2) a {
+    float: left;
+    margin-right: 29px;
+    width: 51px;
+    height: 54px;
+    border-radius: 50%;
+    background: url(../images/IFE_0000_Twitter-Icon.png) 
+                rgba(228, 228, 228, .2) no-repeat center;
+}
+.contact li:nth-of-type(3) a {
+    float: left;
+    width: 51px;
+    height: 54px;
+    border-radius: 50%;
+    background: url(../images/IFE_0001_Instagram-Icon.png) 
+                rgba(228, 228, 228, .2) no-repeat center;
+}
+/* 不用定位，感觉flex做不了这个hover，用了定位就不能自适应了
+估计只能用js */
+/* .figures div:nth-of-type(2n):hover {
+    display: none;
+}
+.figures div:nth-of-type(2n+1):hover {
+    display: block;
+} */
+/* 第七页 */
+.seventh-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    border-bottom: solid 1px #EAEAEA;
+    color: #000;
+}
+.write-us {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 69px;
+    margin-right: 129px;
+    min-width: 370px;
+    max-height: 490px;
+    background-color: rgba(19, 19,19, .1);
+    border-radius: 2%;
+}
+.write-us-title {
+    margin-top: 40px;
+    margin-bottom: 35px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center; 
+    letter-spacing: 1px;
+}
+.write-us input {
+    margin-bottom: 25px;
+    width: 300px;
+    height: 50px;
+    border-radius: 1%;
+    color: #6D707E;
+    font-weight: 600;
+}
+.write-us input:nth-of-type(1) {
+    background-color: rgba(59, 85, 229, .2);
+}
+.write-us input:nth-of-type(2) {
+    background-color: rgba(255, 255,255, .2);
+}
+.write-us textarea {
+    width: 285px;
+    min-height: 124px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    border: 0 none;
+    border-radius: 1%;
+    background-color: rgba(59, 85, 229, .2);
+    overflow: auto;
+    color: #6D707E;
+    font-size: 13px;
+    font-weight: 600;
+}
+.write-us button {
+    width: 300px;
+    height: 50px;    
+    border-radius: 1%;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: #131313;
+}
+.contact-us {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 357px;
+    height: 359px;
+    padding: 86px 0px 115px 0px;
+}
+.contact-us-main {
+    margin-bottom: 38px;
+    font-size: 42px;
+}
+.contact-us-sub {
+    margin-bottom: 66px;
+    font-size: 16px;
+    opacity: .7;
+}
+.contact-us .address {
+    margin-bottom: 37px;
+}
+.address .img {
+    float: left;
+    height: 39px;
+    width: 26px;
+    margin-right: 16px;
+    background: url(../images/IFE_0005_Map-Icon.png) no-repeat center;
+}
+.address p:nth-of-type(1) {
+    margin-bottom: 10px;
+}
+.contact-us .tel {
+    height: 24px;
+    margin-bottom: 30px;
+}
+.tel .img {
+    float: left;
+    height: 24px;
+    width: 26px;
+    margin-right: 16px;
+    background: url(../images/IFE_0004_Phone-Icon.png) no-repeat center;
+}
+
+.contact-us .email {
+    height: 20px;
+}
+.email .img {
+    float: left;
+    height: 20px;
+    width: 26px;
+    margin-right: 16px;
+    background: url(../images/IFE_0003_Mail-Icon.png) no-repeat center;
+}
+/* footer */
+.footer-part {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 411px;
+    background-color: #131313;
+}
+.footer-part dl {
+    margin-top: 90px;
+}
+.footer-part dt {
+    letter-spacing: 1px;
+    font-size: 15px;
+    /* font-weight: 600; */
+}
+/* 字体和设计图差点.. */
+.footer-part dd:nth-of-type(1) {
+    margin-top: 30px;
+}
+.footer-part>dl dd {
+    margin-top: 27px;
+}
+.footer-part a,
+.footer-part dl:nth-of-type(4) dd {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    opacity: .3;
+}
+a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+.footer-part dl:nth-of-type(4) dd {
+    margin-bottom: 44px;
+}
+.footer-part .link-icons {
+    height: 71px;
+}
+.link-icons li:nth-of-type(1) a {
+    float: left;
+    width: 17px;
+    height: 18px;
+    margin-right: 27px;
+    background: url(../images/IFE_0000_Twitter-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(2) a {
+    float: left;
+    width: 9px;
+    height: 18px;
+    margin-right: 24px;
+    background: url(../images/IFE_0001_Facebook-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(3) a {
+    float: left;
+    width: 24px;
+    height: 18px;
+    margin-right: 24px;
+    background: url(../images/IFE_0002_Google-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(4) a {
+    float: left;
+    width: 10px;
+    height: 18px;
+    margin-right: 31px;
+    background: url(../images/IFE_0021_Tumbler-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(5) a {
+    float: left;
+    width: 14px;
+    height: 18px;
+    margin-right: 26px;
+    background: url(../images/IFE_0022_Pinterest-Icon.png) no-repeat center;
+}
+.link-icons li:nth-of-type(6) a{
+    float: left;
+    width: 16px;
+    height: 18px;
+    background: url(../images/IFE_0023_LinkedIn-Icon.png) no-repeat center;
+}
