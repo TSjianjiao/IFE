@@ -158,6 +158,7 @@ em {
     padding-left: 22px;
     width: 270px;
     height: 50px;
+    margin-right: 24px;
     border: solid 1px #5A534D;
     background-color: rgba(0, 0, 0, .2);
     border-radius: 3%;
@@ -470,7 +471,7 @@ mask盒子的时候就只有个mask没有图片*/
 }
 .figures>div:nth-of-type(2n+1) {
     position: absolute;
-    width: 217px;
+    width: 216px;
     height: 139px;
     padding: 110px 128px 91px 128px ;
     background: rgba(19, 19, 19, .65);
