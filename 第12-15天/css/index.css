@@ -810,7 +810,7 @@ img:hover {
     flex-shrink: 0;
     flex-grow: 0;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: left;
     margin: 0px 56px 23px 29px;
     /* background-color: #998ff7; */
