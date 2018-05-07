@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>day12-15</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- 左侧栏 -->
+    <div class="side-scorll-hide">
+        <div class="side-bar">
+            <div class="side-top-item">
+                <ul>
+                    <li><a href="javascript:void" class="message"></a></li>
+                    <li><a href="javascript:void" class="rocket"></a></li>
+                    <li><a href="javascript:void" class="game"></a></li>
+                    <li class="add-base"><a href="javascript:void" class="add"></a></li>
+                </ul>
+            </div>
+            <div class="side-bottom-item">
+                <ul>
+                    <li><a href="javascript:void" class="more"></a></li>
+                    <li><a href="javascript:void" class="set"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 主侧菜单 -->
+    <div class="menu-scorll-hide">
+        <div class="menu">
+            <dl class="main-menu">
+                <dt>
+                    <span>MENU</span> 
+                    <a href="javascript:void"></a>
+                </dt>
+                <!-- 激活高亮就将dd的样式改为active，
+                否则就为空 -->
+                <dd class="">
+                    <span>Overview</span>
+                    <i class="off"></i>
+                </dd>
+                <dd class="">
+                    <span>Sales</span>
+                    <i class="on">54</i>
+                </dd>
+                <dd class="">
+                    <span>Your Staff</span>
+                    <i class="off"></i>
+                </dd>
+                <dd class="">
+                    <span>Analytics &amp; Targeting</span> 
+                    <i class="off"></i>
+                </dd>
+                <dd class=""> 
+                    <span>What’s New</span>
+                    <i class="off"></i>
+                </dd> 
+            </dl>
+            <p class="line"></p>
+            <dl class="your-products">
+                <dt>
+                    <span>YOUR PRODUCTS</span> 
+                    <a href="javascript:void"></a>
+                </dt>
+                <dd class=""> 
+                    <u></u>
+                    <span>Books</span>
+                </dd >
+                <dd class="">
+                    <u></u>
+                    <span>Tutorials</span>                 
+                </dd>
+                <dd class=""> 
+                    <u></u>
+                    <span>Stocks</span>      
+                </dd>
+                <dd class="">
+                    <u></u>
+                    <span>Infographics</span>      
+                </dd>
+            </dl>
+            <p class="line"></p>
+            <dl class="dashboard">
+                <dt>
+                    <span>DASHBOARD</span> 
+                    <a href="javascript:void"></a>
+                </dt>  
+                <dd class="active">
+                    <!-- 没被选中样式为空 -->
+                    <span class="selected">Messages</span>
+                    <i class="on">21</i>
+                </dd>
+                <dd class="">
+                    <span>Connections</span>
+                    <i class="off"></i>
+                </dd>
+                <dd class="">
+                    <span>Integrations</span>
+                    <i class="off"></i>
+                    <em class="alert">!</em>
+                </dd>
+                <dd class=""> 
+                    <span>Account Settings</span>
+                    <i class="off"></i>
+                </dd>
+                <dd class="">
+                    <span>App Settings</span>
+                    <i class="off"></i>
+                </dd>
+            </dl>
+            <div class="monthly-goals">
+                <!-- 为了动态改变数值，分开写 -->
+                <span>Monthly Goals</span>
+                <span>$</span>
+                <span>580</span>
+                <span>/$</span>
+                <span>3200</span>
+                <div class="progress-bar">
+                    <div class="step"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--————————————————主交互区域——————————————————————-->
+    <!-- 左侧消息记录 -->
+    <div class="left-record">
+        <!-- 左顶部栏 -->
+        <div class="l-top-current">
+            <p>Messages</p>
+        </div>
+        <!-- search栏 -->
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+        <!-- 历史记录 -->
+        <div class="hide-record-scroll">
+            <div class="record">
+                <div class="select-this">
+                    <div class="top">
+                        <img src="./images/IFE_0002_girl.png" alt="头像">
+                        <ul>
+                            <li>
+                                <i class="status-on"></i><!-- 状态标签 -->
+                                <a href="javascript:void" class="status-on">Bessie Berry</a>
+                            </li>
+                            <li><a href="javascript:void">Twitter</a></li>
+                        </ul>
+                        <span>3m</span>
+                    </div>
+                    <div class="bottom">
+                        <p class="info-text">
+                            I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable...
+                        </p>
+                        <em class="unread">4</em>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="top">
+                        <img src="./images/IFE_0027_Face6.png" alt="头像">
+                        <ul>
+                            <li>
+                                <i class=""></i><!-- 状态标签 -->
+                                <a href="javascript:void" class="">Victor Weber</a>
+                            </li>
+                            <li><a href="javascript:void">Adobe</a></li>
+                        </ul>
+                        <span>8m</span>
+                    </div>
+                    <div class="bottom">
+                        <p class="info-text">
+                            I shared this on my fb wall a few months back, and I thought I'd share it here again because it's such a great...
+                        </p>
+                        <em class=""></em>
+                    </div>   
+                </div>
+                <div class="">
+                    <div class="top">
+                            <img src="./images/IFE_0028_Face5.png" alt="头像">
+                            <ul>
+                                <li>
+                                    <i class=""></i><!-- 状态标签 -->
+                                    <a href="javascript:void" class="">Dustin Benson</a>
+                                </li>
+                                <li><a href="javascript:void">Facebook</a></li>
+                            </ul>
+                            <span>Yesterday</span>
+                    </div>
+                    <div class="bottom">
+                        <p class="info-text">
+                            If there is anyone who needs an invitation please add yourself in the comments of this post!
+                        </p>
+                        <em class="">4</em>
+                    </div>   
+                </div>
+                <div class="">
+                    <div class="top">
+                        <img src="./images/IFE_0029_Face4.png" alt="头像">
+                        <ul>
+                            <li>
+                                <i class=""></i><!-- 状态标签 -->
+                                <a href="javascript:void" class="">Jack Mason</a>
+                            </li>
+                            <li><a href="javascript:void">Yahoo</a></li>
+                        </ul>
+                        <span>Yesterday</span>
+                    </div>
+                    <div class="bottom">
+                        <p class="info-text">
+                            BruteDC is a peer-to-peer movie+tv series sharing and downloading platform which works on intranet inside...
+                        </p>
+                        <em class=""></em>
+                    </div>   
+                </div>
+                <div class="">
+                    <div class="top">
+                        <img src="./images/IFE_0031_Face2.png" alt="头像">
+                        <ul>
+                            <li>
+                                <i class=""></i><!-- 状态标签 -->
+                                <a href="javascript:void" class="">Stephen Shelton</a>
+                            </li>
+                            <li><a href="javascript:void">Snapchat</a></li>
+                        </ul>
+                        <span>13 Jun</span>
+                    </div>
+                    <div class="bottom">
+                        <p class="info-text">
+                            Yes, p2p traffic is often filtered (QoSed). Although i do use BT on O2 wires, and in good days dl speed...
+                        </p>
+                        <em class=""></em>
+                    </div>   
+                </div>
+                <div class="">
+                    <div class="top">
+                        <img src="./images/IFE_0030_Face3.png" alt="头像">
+                        <ul>
+                            <li>
+                                <i class=""></i><!-- 状态标签 -->
+                                <a href="javascript:void" class="">Sally Willis</a>
+                            </li>
+                            <li><a href="javascript:void">Twitter</a></li>
+                        </ul>
+                        <span>12 Jun</span>
+                    </div>
+                    <div class="bottom">
+                        <p class="info-text">
+                            Yes, it's O2: 'internet extreme', which is no longer offered.
+                        </p>
+                        <em class=""></em>
+                    </div>   
+                </div>
+                <div class="">
+                    <div class="top">
+                        <img src="./images/IFE_0032_Face1.png" alt="头像">
+                        <ul>
+                            <li>
+                                <i class=""></i><!-- 状态标签 -->
+                                <a href="javascript:void" class="">Robert Patton</a>
+                            </li>
+                            <li><a href="javascript:void">A Team</a></li>
+                        </ul>
+                        <span>9 Jun</span>
+                    </div>
+                    <div class="bottom">
+                        <p class="info-text">
+                            I change my service from this 4Mb plan to their much 
+                        </p>
+                        <em class=""></em>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右侧信息流 -->
+    <div class="r-container">
+            <!-- 右顶部栏 -->
+        <div class="r-top-bar">
+            <div class="user">
+                <div class="user-head">
+                    <div class="head-image">
+                        <img src="./images/IFE_0041_boy.png" alt="头像">
+                        <div class="status"></div>
+                    </div>
+                    <ul>
+                        <li><a href="javascript:void" class="user-name">Jordan J.</a></li>
+                        <li><a href="javascript:void" class="user-level">Administrator</a></li>
+                    </ul>
+                </div>
+                <div class="more"></div>
+            </div>
+        </div>
+        <div class="tool-flow-container">
+                <!-- 顶部工具栏 -->
+            <div class="r-tool-bar">
+                <div class="chart-user">
+                    <span class="name">Bessie Berry</span>
+                    <i class="state"></i>
+                </div>
+                <div class="tools">
+                    <div class="up-data">
+                        <div class="user-icon"></div>
+                        <div class="upload-icon"></div>
+                        <div class="trash-icon"></div>
+                    </div>
+                    <i class="line"></i>
+                    <div class="page-num">
+                        <span>1</span>
+                        <span>of</span>
+                        <span>28</span>
+                    </div>
+                    <div class="page">
+                        <div class="pre"></div>
+                        <div class="after"></div>
+                    </div>
+                </div>
+            </div>
+                <!-- 信息流 -->
+            <div class="hide-flow-scorll">
+                <!-- 主阅览区域 -->
+                <div class="text-flow"> 
+                    <div class="history">
+                        <div class="head-container">
+                            <img src="./images/IFE_0002_girl.png" alt="头像">
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="javascript:void" class="">Bessie Berry</a>
+                                <span>8:31 AM</span>
+                            </li>
+                            <li>Hi guys Ive got the O2 package and have really slow internet. A speed check online said i can get 3mbps but it seems more like 0.5 these days, just freezing and taking ages to open pages and open audio files for example. I have decided to switch to the UPC package which offers 10mbps but do you think i will get it?</li>
+                            <!-- 上传的图片 -->
+                            <li class="no-image" >
+                                <img src="" alt="">
+                                <img src="" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="history">
+                            <div class="head-container">
+                                <img src="./images/IFE_0041_boy.png" alt="头像">
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="javascript:void" class="">Jordan Jackson</a>
+                                    <span>8:31 AM</span>
+                                </li>
+                                <li>I have internet for 9 month and nevere could benefit from the full capacity of 5Mbit/s as it is filtered by O2 when it detect traffic on public p2p sharing in my situation all my internet speed slows to 512Kbit/s. I never had 400KB/s on when downloading from p2p public servers like torrent emule etc. I downoad with 500KB/s from private trakers instead. So conlcusion O2 block trafic on p2p connections. I have made hundreds of test in Italy and Sweden and Romania with the same file to doanload with the same setting and same antivirus and just needed to open ports in firewall and forward same ports and the speed was at full capacity in 1 minute. here in 9 month never had this luck.</li>
+                                <li class="no-image" >
+                                    <img src="" alt="">
+                                    <img src="" alt="">
+                                </li>
+                            </ul>
+                    </div>
+                    <!-- 分割线 -->
+                    <div class="splitter-container">
+                        <i></i>
+                        <span>Tuesday</span>
+                        <i></i>
+                    </div>
+                    <div class="history">
+                        <div class="head-container">
+                            <img src="./images/IFE_0002_girl.png" alt="头像">
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="javascript:void" class="">Bessie Berry</a>
+                                <span>8:31 AM</span>
+                            </li>
+                            <li>Funny comparison. so would the proper antivirus not slow down the internet as much or do you mean a freebie doenst protect the computer from viruses?</li>
+                            <li class="no-image" >
+                                <img src="" alt="">
+                                <img src="" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="history">
+                        <div class="head-container">
+                            <img src="./images/IFE_0041_boy.png" alt="头像">
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="javascript:void" class="">Jordan Jackson</a>
+                                <span>8:31 AM</span>
+                            </li>
+                            <li>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2, and haven't had any problems. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. I max out at about 3 Mb/sec down, and 350 Kb/sec up. Probably because of a noisy telephone line, not because I'm being throttled. When my uploads go over 25 KB/sec (note, bytes, not bits), my download speed suffers. This is expected, as downloads require upload bandwidth as well. </li>
+                            <li class="custom-image" >
+                                <img src="./images/IFE_0040_Photo.png" alt="">
+                                <img src="./images/IFE_0001_Base.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="splitter-container">
+                        <i class="left"></i>
+                        <span class="new">New Messages</span>
+                        <i class="right"></i>
+                    </div>
+                    <div class="history">
+                        <div class="head-container">
+                            <img src="./images/IFE_0002_girl.png" alt="头像">
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="javascript:void" class="">Bessie Berry</a>
+                                <span>8:31 AM</span>
+                            </li>
+                            <li>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. </li>
+                            <li class="no-image" >
+                                <img src="" alt="">
+                                <img src="" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 下方输入框 -->
+                <div class="send-message">
+                    <button class="pluse-button">
+                        <i></i>
+                    </button>
+                    <textarea name="" id="" placeholder="Send">Well, kinda both :) but more of that second option, i`ve seen many systems infected and crawling with</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

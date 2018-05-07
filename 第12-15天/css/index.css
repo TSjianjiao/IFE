@@ -1,0 +1,931 @@
+/* 初始化 */
+@charset "UTF-8";
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+    margin: 0;
+    padding: 0;
+}
+/* 引用字体 */
+@font-face {
+    font-family: 'Nova';
+    src: url(../ProximaNovaRegular.otf) format("OpenType");
+    font-weight: normal;
+    font-style: normal;
+
+}
+body,
+input,
+button {
+    font: 14px 'Nova', sans-serif;
+    color: #000;
+}
+fieldset, 
+img, 
+input, 
+button { 			/*fieldset组合表单中的相关元素*/
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+ul, 
+ol {
+    list-style: none;				/*清除列表风格*/
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+select, 
+input {
+    vertical-align: middle;
+}
+
+select, 
+input, 
+textarea {
+    font-size: 14px;
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+/*防止多行文本框拖动*/
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/*  去掉图片低测默认的3像素空白缝隙*/
+table {
+    border-collapse: collapse;			/*合并外边线*/
+}
+/* 清除浮动 */
+.clearfix:before, 
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1; /*IE/7/6*/
+}
+s,
+a {
+    color: #000;
+    text-decoration: none;
+}
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s, 
+i, 
+em {				
+    font-style: normal;
+    text-decoration: none;
+}
+
+/*公共类*/
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+html,
+body {
+    height: 100%;
+}
+/* 左侧栏 */
+/*在内容盒子外面套一个小一点的父盒子，并设置溢出隐藏
+这样内容盒子的滚动条就被隐藏了*/
+/* 用绝对定位相对于祖先元素也就是html元素定位，防止产生
+其他定位错误 */
+/*这里的z-index之后对于右侧可变区域有用
+防止页面缩小的时候，右侧信息叠加到左侧固定栏上*/
+.side-scorll-hide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    overflow: hidden;
+    z-index: 10;
+}
+.side-bar {
+    width: 118px;
+    /* height: 1000px; */
+    height: 100%;
+    background-color: #1D2530;
+    /* 按钮较多时 */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+/*....火狐居然不支持
+自定义div滚动条，只写了个webkit浏览器的
+*/
+/* 滚动条 */
+/* .side-bar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+} */
+/*正常情况下滑块的样式*/
+/* .side-bar::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.05);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+} */
+/*鼠标悬浮在该类指向的控件上时滑块的样式*/
+/* .side-bar:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.2);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+} */
+/*鼠标悬浮在滑块上时滑块的样式*/
+/* .side-bar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,.4);
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+} */
+/*正常时候的主干部分*/
+/* .nui-scroll::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+    background-color: white;
+} */
+/*鼠标悬浮在滚动条上的主干部分*/
+/* .nui-scroll::-webkit-scrollbar-track:hover {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.4);
+    background-color: rgba(0,0,0,.01);
+} */
+.side-bar a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+/*这里为了能滑动就不能设置固定，不然动不了。
+也不能设置就绝对，这样就脱离了标准流，会
+浮在父元素上，overflow就不起作用了*/
+.side-top-item {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.side-top-item li {
+    height: 60px;
+    width: 60px;
+    margin: 19px;
+}
+/*这里给了背景是因为多余的按钮会漏出来，所以设置了
+宽度和高度还有背景色挡住多余部分*/
+/* 这里也是给绝对定位相对于side-scorll-hide，
+防止左右滑动浏览器，地步选项也跟着动 */
+.side-bottom-item {
+    position: absolute;
+    bottom: 0;
+    left: 0;  
+    width: 48px;
+    height: 36px;
+    padding: 0 26px;
+    background-color: #1D2530;
+}
+.side-bottom-item li:first-of-type {
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+.side-bottom-item li:last-of-type {
+    float: right;
+    width: 16px;
+    height: 16px;
+}
+/* 分开写li和a，我是想如果要更改按钮，那么功能
+不同只需要改a，背景不同只需要改div，虽然可以
+设置多背景，但是多背景只是css3的特性 */
+.side-top-item li:nth-of-type(1) {
+    background: url(../images/IFE_0026_Base.png) no-repeat center;
+}
+.side-top-item li:nth-of-type(2) {
+    background: url(../images/IFE_0024_Base.png);
+}
+.side-top-item li:nth-of-type(3) {
+    background: url(../images/IFE_0022_Base.png);
+}
+/* 这里单独设置add的背景是因为add这个按钮是固定的，
+不应该被改变 */
+.side-top-item .add-base {
+    background: url(../images/IFE_0016_Pluse-Base.png);
+}
+/* 设置按钮前景图标 */
+.side-top-item .message {
+    background: url(../images/IFE_0025_Item-1.png) no-repeat center;
+}
+.side-top-item .rocket {
+    background: url(../images/IFE_0023_Item-2.png) no-repeat center;
+}
+.side-top-item .game {
+    background: url(../images/IFE_0021_Item-3.png) no-repeat center;
+}
+.side-top-item .add {
+    background: url(../images/IFE_0015_Plus-Icon.png) no-repeat center;
+}
+/* 设置下方固定栏前景图标 */
+.side-bottom-item .more {
+    background: url(../images/IFE_0019_Grid.png) no-repeat center;
+}
+.side-bottom-item .set {
+    background: url(../images/IFE_0007_Settings.png) no-repeat center;
+}
+
+/* 主侧菜单 */
+/* 隐藏滚动条 */
+/* 用绝对定位相对于祖先元素也就是html元素定位，防止产生
+其他定位错误 */
+.menu-scorll-hide {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    height: 100%;
+    width: 250px;
+    overflow: hidden;
+    z-index: 10;
+}
+.menu {
+    /* float: left; */
+    width: 268px;
+    height: 100%;
+    font-size: 12px;
+    color: #ffffffa6;
+    background-color: #212C3B;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+.menu span {
+    /*行内元素默认基线对齐
+    至于为什么选择top，其实是
+    试出来的...*/
+    vertical-align: top;
+    margin-left: 29px;
+}
+/* 那个设置按钮 */
+.menu dt a {
+    /* display: block; */
+    float: right;
+    height: 16px;
+    width: 16px;
+    background: url(../images/IFE_0007_Settings.png) no-repeat center;
+}
+/* 消息提示 */
+.menu .on {
+    float: right;
+    width: 32px;
+    height: 24px;
+    text-align: center;
+    color: #fff;/*防止继承透明度*/
+    background: url(../images/IFE_0006_bigblueBase.png) no-repeat center;
+    opacity: 1;
+}
+/* 选择高亮 */
+.menu .active {
+    /* 把dd的背景设置换一下，这样不会影响
+    文字的外间距，也能显示出高亮点 */
+    background: url(../images/IFE_0008_Active-Highlight.png) no-repeat -9px 3px;
+}
+/* 信息警告 */
+.menu .alert {
+    float: right;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    background: url(../images/IFE_0010_red-Base.png);
+}
+/* 被选中 */
+.menu .selected {
+    color: #fff;
+}
+/* 关闭提示 */
+.menu .off {
+    display: none;
+}
+.menu dl {
+    padding-right: 30px;
+}
+.menu dt {
+    /*记得设置行高，不然对不齐*/
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 23px;
+    color: #ffffff59;
+}
+.menu dd {
+    height: 24px;
+    margin-bottom: 12px;
+    line-height: 24px;
+}
+.menu dd:hover {
+    cursor: pointer;
+    color: #fff;
+}
+.line {
+    width: 190px;
+    height: 1px;
+    margin: 0 auto;
+    background: #2A3546;
+}
+/* 主侧菜单---->主菜单 */
+.main-menu {
+    margin-top: 30px;
+}
+.main-menu dt {
+    margin-bottom: 20px;
+}
+.main-menu dd:last-of-type {
+    margin-bottom: 21px;
+}
+/* 主侧菜单---->your-products */
+.your-products {
+    margin-top: 23px;
+}
+.your-products span {
+    margin-left: 12px;
+}
+.your-products dd:last-of-type {
+    margin-bottom: 26px;
+}
+.your-products u {
+    display: inline-block;
+    width: 18px;
+    height: 24px;
+    margin-left: 20px;
+}
+.your-products dd:nth-of-type(1) u {
+    background: url(../images/IFE_0011_Book-of-Wisdom.png) no-repeat center;
+}
+.your-products dd:nth-of-type(2) u {
+    background: url(../images/IFE_0012_Video-Camera.png) no-repeat center;
+}
+.your-products dd:nth-of-type(3) u {
+    background: url(../images/IFE_0014_Painting.png) no-repeat center;
+}
+.your-products dd:nth-of-type(4) u {
+    background: url(../images/IFE_0013_Chart.png) no-repeat center;
+}
+/* 主侧菜单---->dashboard */
+.dashboard {
+    margin-top: 22px;
+}
+/* 主侧菜单---->monthly-goals */
+/* 这里也是使用绝对定位，相对于祖元素menu-scorll-hide */
+/* 不然左右滑动浏览器的时候 下面这东西也跟着滑动，不符合使用习惯 */
+.monthly-goals {
+    position: absolute;
+    bottom: 0;
+    width: 220px;
+    height: 54px;
+    padding-right: 30px;
+    color: #fff;
+    background: #212C3B;
+}
+.monthly-goals span {
+    margin: 0;
+}
+.monthly-goals span:first-of-type {
+    margin-left: 29px;
+    margin-right: 25px;
+}
+.monthly-goals .progress-bar {
+    width: 190px;
+    height: 4px;
+    margin-left: 29px;
+    margin-top: 12px;;
+    background-color: #475263;
+    border-radius: 2px;
+}
+.progress-bar .step {
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    /* 渐变颜色 */
+    background:-moz-linear-gradient(left,#7F5BE5,#9D8FE2);/*火狐*/
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#7F5BE5), to(#9D8FE2));/*谷歌*/ 
+}
+/* 主交互区域 */
+/* 左边部分 */
+.left-record {
+    position: absolute;
+    top: 0;
+    left: 350px;
+    width: 399px;
+    height: 100%;
+    z-index: 10;
+}
+/* 左边部分---->当前页面 */
+.l-top-current {
+    /* 为了自适应宽度，不能设置margin和padding */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 78px;
+    border-top: solid 1px #e6e9ec;
+    border-bottom: solid 1px #e6e9ec;
+    line-height: 79px;
+    font-size: 24px;
+    color: #353F51;
+    background-color: #fff;
+}
+.l-top-current p {
+    margin-left: 30px;
+}
+/* 左边部分---->search栏 */
+.search {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    height: 69px;
+    width: 369px;
+    padding-right: 29px;
+    border-right: solid 1px #e6e9ec;
+    background-color: #fff;
+}
+.search input {
+    width: 324px;
+    height: 34px;
+    padding-left: 14px;
+    margin-top: 15px;
+    margin-left: 30px;
+    border: solid 1px  #e5e8ee;
+    border-radius: 5px;
+    color: #b5bcc9;
+    background: url(../images/IFE_0034_Search-icon.png) no-repeat 308px;
+}
+/* 左边部分---->历史记录 */
+.hide-record-scroll {
+    height: 100%;
+    width: 399px;
+    overflow: hidden;
+    /* background-color: #f0756c; */
+}
+.record {
+    height: 100%;
+    width: 418px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+/* 第一个div为什么要margin-top,主要是因为
+网页结构是这样的，消息记录列表实际上是藏
+在最下面的，还有一节长度 */
+.record>div:first-of-type {
+    margin-top: 150px;
+}
+.record>div:nth-of-type(n) {
+    width: 348px;
+    height: 130px;
+    padding-right: 20px;
+    padding-left: 30px;
+    border: solid 1px #e6e9ec;
+    border-left: none;
+    border-top: none;
+    background-color: #fff;
+}
+.record i {
+    display: none;
+    width: 8px;
+    height: 8px;
+    background: url(../images/IFE_0018_Status.png)
+}
+.record span {
+    float: right;
+    color: #7f8fa4;
+    margin-top: -13px;
+}
+.record em {
+    display: none;
+    float: right;
+    width: 24px;
+    height: 24px;
+    margin-top: -50px;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+    background: url(../images/IFE_0017_smallblueBase.png);
+}
+.record .top {
+    height: 54px;
+    padding-top: 15px;
+    line-height: 54px;
+    /* background-color: #e66a6a; */
+}
+.record .top img {
+    width: 46px;
+    height: 46px;
+    vertical-align: top;
+}
+.record .top ul {
+    display: inline-block;
+    width: 200px;
+    margin-left: 21px;
+    line-height: 20px;
+    /* inline-block元素要单独设置
+    vertical-align相对于父元素
+    对齐，才不会相对于旁边的元素
+    对齐，这样才方便单独设置margin */
+    margin-top: 4px;
+}
+/* 注意样式优先级 */
+.record a {
+    color: #575D67;
+}
+.record li:last-of-type a {
+    color: #b5b5b5;
+}
+.record .bottom {
+    height: 61px;
+    /* background-color: #3df87b; */
+}
+.record .bottom:hover {
+    cursor: pointer;
+}
+.record .bottom .info-text {
+    width: 291px;
+    height: 54px;
+    color: #575D67;
+    /* 多行文字省略，css实现起来
+    太苦难了... */
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
+}
+/* 选中时的样式 
+多加个选择器防止优先级不够*/
+.hide-record-scroll .record .select-this {
+    padding-right: 20px;
+    padding-left: 27px;
+    border-left: 3px solid #2399F1;
+}
+.record .status-on {
+    display: inline-block;
+    color: #2298F0;
+}
+/* 有未读信息 */
+.record .unread {
+    display: block;
+}
+/* 右边部分 */
+/* 这里将右侧容器的显示等级调至最低，为了防止
+页面缩小时显示在其他固定栏上*/
+.r-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+.r-top-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 78px;
+    width: 700px;
+    border: solid 1px #e6e9ec;
+    border-left: none;
+    background-color: #fff;
+    z-index: 5;
+}
+.r-top-bar .user {
+    position: absolute;
+    right: 30px;
+    top: 0;
+    width: 201px;
+    height: 78px;
+}
+.user .user-head {
+    float: left;
+    width: 190px;
+}
+.user .head-image{
+    float: left;
+    width: 50px;
+    height: 78px;
+    line-height: 78px;
+}
+.head-image img {
+    width: 50px;
+    height: 50px;
+    /* 使用vertical-align之前父元素
+    一定要设置line-height */
+    vertical-align: middle; 
+}
+img:hover {
+    cursor: pointer;
+}
+/* 状态标志 */
+.head-image .status {
+    position: relative;
+    left: 30px;
+    top: -35px;
+    width: 14px;
+    height: 14px;
+    border: solid 3px #fff;
+    border-radius: 50%;
+    background: url(../images/IFE_0004_Status.png) #fff no-repeat center;
+}
+.user .more {
+    float: right;
+    width: 11px;
+    height: 78px;
+    background: url(../images/IFE_0003_dropdown.png) no-repeat center;
+}
+.user .more:hover {
+    cursor: pointer;
+}
+/* 设计图上测量了，然后写进来实现的时候看起来很奇怪 
+所以修改了一下margin值*/
+.user-head ul{
+    float: right;
+    width: 140px;
+    height: 54px;
+    margin-top: 17px;
+}
+.user-head li {
+    margin-left: 16px;
+    margin-bottom: 6px;
+}
+.user-head .user-name {
+    font-weight: 600;
+    color: #2399f1;
+}
+.user-head .user-level {
+    color: #c0c0c0;
+}
+/* 工具栏和信息流容器 */
+.tool-flow-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+/* 顶部工具栏 */
+.r-tool-bar {
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 69px;
+    border-bottom: solid 1px #e6e9ec;
+    margin-top: 80px;
+    padding: 0px 20px 0 776px;
+    justify-content: space-between;
+    background-color: #fff;
+}
+.r-tool-bar .chart-user {
+    width: 118px;
+    min-width: 96px;
+}
+.r-tool-bar .chart-user .name {
+    float: left;
+    margin-top: 27px;
+    color: #575D67
+}
+.r-tool-bar .chart-user .state {
+    float: left;
+    width: 8px;
+    height: 8px;
+    margin: 32px 0px 0 10px;
+    background: url(../images/IFE_0042_Status.png)
+}
+.r-tool-bar .tools {
+    width: 284px;
+    min-width: 284px;
+}
+.tools .up-data {
+    width: 109px;
+    /* height: 32px; */
+    height: 100%;
+    background: url(../images/IFE_0046_Base.png) no-repeat center;
+}
+.up-data div {
+    float: left;
+    width: 35px;
+    height: 30px;
+    margin-top: 20px;
+    border-right: solid 1px #ced0da;
+}
+.up-data div:last-of-type {
+    border: none;
+}
+.up-data .user-icon {
+    background: url(../images/IFE_0044_User-icon.png) no-repeat center;
+}
+.up-data .upload-icon {
+    background: url(../images/IFE_0045_Upload-icon.png) no-repeat center;
+
+}
+.up-data .trash-icon {
+    background: url(../images/IFE_0043_Trash-icon.png) no-repeat center;
+}
+.up-data div:hover {
+    cursor: pointer;
+}
+.tools .line {
+    float: left;
+    width: 1px;
+    height: 30px;
+    margin: -49px 23px 0 131px;
+    background-color: #CDCFD9;
+}
+.tools .page-num {
+    float: right;
+    margin: -42px 92px 0 0;
+}
+.tools .page-num span {
+    color: #575D67;
+}
+.tools .page {
+    float: right;
+    width: 72px;
+    height: 32px;
+    border-right: solid 1px #ced0da;
+    border-radius: 4px;
+    margin-top: -51px;
+    background: url(../images/IFE_0046_Base.png) no-repeat left;
+}
+.tools .page .pre {
+    float: left;
+    width: 35px;
+    height: 100%;
+    border: inherit;
+    background: url(../images/IFE_0001_Arrow-left.png) no-repeat center;
+}
+.tools .page .after {
+    float: left;
+    width: 36px;
+    height: 100%;
+    background: url(../images/IFE_0000_Arrow-right.png) no-repeat center;
+}
+.tools .page div:hover {
+    cursor: pointer;
+}
+/* 文本流部分 */
+.hide-flow-scorll {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 750px;
+    overflow: hidden;
+}
+.text-flow {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* 宽度设很大 超出父容器
+    用来隐藏滚动条 */
+    /* 需要注意，此容器虽然
+    看起来好像宽度是对的
+    但是实际上里面的子元素
+    是按照115%的父容器宽度对齐的 */
+    width: 115%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.text-flow .history {
+    /* 下面这两句很重要！！！
+    如果不加，谷歌浏览器
+    会默认把收缩和扩张值
+    设为1，而火狐好像是0？
+    反正如果不加，谷歌浏览器显示不正常 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin: 0px 56px 23px 29px;
+    /* background-color: #998ff7; */
+}
+.text-flow>div:nth-of-type(1) {
+    margin-top: 25px;
+}
+.history li {
+    /* 宽度设置为百分比，因为父容器的宽度
+    是设置的115%，所以用固定px值，自适应不好 */
+    width: 85%;
+}
+.history ul>li {
+    margin-top: 5px;
+}
+.history ul li:nth-of-type(2) {
+    margin-left: 21px;
+    color: #575D67;
+}
+.history span {
+    margin-left: 9px;
+    color: #7f8fa4;
+}
+.history a {
+    margin-left: 21px;
+    color: #575D67;
+}
+/* 用户头像 */
+.head-container {
+    width: 46px;
+}
+.head-container img {
+    width: 46px;
+    height: 46px;
+}
+/* 上传的图片 
+   只先能显示前两张图*/
+.custom-image img {
+    /* 透明边框，留个圆角 */
+    width: 156px;
+    height: 98px;
+    border: solid 1px #fd010100;
+    border-radius: 4px;
+    margin-left: 13px;
+}
+.custom-image img:hover {
+    cursor: pointer;
+}
+.custom-image img:first-of-type {
+    margin-left: 20px;
+}
+/* 没有图片时 */
+/* 不然空的img也会占空间 */
+.no-image {
+    display: none;
+}
+.splitter-container {
+    /* 使分割线可以自适应 */
+    display: flex;
+    justify-content: left;
+    height: 13px;
+    margin-bottom: 32px;
+    line-height: 13px;
+}
+.splitter-container i {
+    float: left;
+    height: 1px;
+    width: 300px;
+    margin-top: 5px;
+    background-color: #9FA9B9;
+}
+.splitter-container span {
+    float: left;
+    margin: 0 15px 0 15px;
+    color: #7f8fa4;
+    white-space: nowrap;
+}
+/* 新消息的分割线 */
+.splitter-container .new {
+    color: #2399F1;
+}
+.splitter-container .left, 
+.splitter-container .right{
+    background-color: #2399F1;
+}
+/* 发送消息框 */
+.send-message {
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 52px;
+    border: solid 1px #dfe3e9;
+    border-radius: 5px;
+    /* 火狐和谷歌的margin-bottom有点不一样 */
+    margin: 0 31px 21px 29px;
+    background-color: #fff;
+}
+.send-message .pluse-button {
+    width: 59px;
+    height: 54px;
+    border-right: solid 1px #dfe3e9;
+    /* 这图好像自带边框 */
+    background: url(../images/IFE_0036_Add-Base.png) no-repeat center;
+}
+.pluse-button i {
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin-left: 20px;
+    background: url(../images/IFE_0035_Add-icon.png) no-repeat center; 
+}
+.send-message textarea {
+    width: 100%;
+    border: none;
+    padding: 12px 0 0 19px;
+    font: 14px 'Nova', sans-serif;
+    color: #575D67;
+}
