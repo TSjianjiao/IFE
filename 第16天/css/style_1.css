@@ -1,0 +1,95 @@
+body {
+    font:16px micorsoft yahei;
+    background:#fff;
+}
+body,
+p,
+form,
+ul,
+li{
+    margin:0;
+    padding:0;
+    list-style:none;
+    font-size: 16px;
+}
+
+span {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+a {
+    color:#00c;
+}
+a:active {
+    color:#f60;
+}
+
+.main{
+    width: 50%;
+    margin: 0 auto;
+}
+/* 标题 */
+.resume{
+    height: 65px;
+    width: 200px;
+    margin-top: 27px;
+    font-size: 30px;
+    margin: 0 auto;
+}
+/* 基本信息 */
+.info {
+    height: 67px;  
+    margin-bottom: 28px;
+}
+.title {
+    height: 23px;
+    width: 100px;
+    margin-bottom: 28px;
+    line-height: 23px;
+    padding-left: 0;
+    font-size: 23px;
+    font-weight: 700;
+    
+}
+.info 
+ul 
+li {
+    float: left;
+    margin-right: 40px;
+}
+/* 联系方式 */
+.connect {
+    height: 67px;  
+    margin-bottom: 28px;
+}
+.connect 
+ul 
+li {
+    float: left;
+    margin-right: 40px;
+}
+/* 能力描述 */
+.ability {
+    height: 149px;
+    margin-bottom: 28px;
+}
+.tec{
+    margin-bottom: 22px;
+}
+/* 教育经历 */
+.education {
+    height: 149px;
+    margin-bottom: 28px;
+}
+.edu{
+    margin-bottom: 22px;
+}
+/* 项目经历 */
+.project {
+    height: 149px;
+    margin-bottom: 28px;
+}
+.work{
+    margin-bottom: 22px;
+}
