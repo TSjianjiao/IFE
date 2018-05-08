@@ -13,7 +13,7 @@ function showTime() {
         }else if (13 <= myDate.getHours() && myDate.getHours()<=18) {
             confirm("下午好");
         }else if (19 <= myDate.getHours() && myDate.getHours()<=23) {
-            confirm("下午好");
+            confirm("晚上好");
         }
         flag = false;
     }
