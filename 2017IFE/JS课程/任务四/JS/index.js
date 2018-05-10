@@ -60,7 +60,7 @@ function queue(flag) {
         if (isNaN(inputObj.value) || inputObj.value === "") {
             throw "请输入数字";
         }
-        blockList.unshift(creatBlock(inputObj.value));
+        blockList.push(creatBlock(inputObj.value));
         console.log(blockList);
         // 先清空内容
         containerObj.innerHTML = " ";
