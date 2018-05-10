@@ -1,0 +1,19 @@
+.main {
+    width: 500px;
+    margin: 0 auto;
+    background-color: rgba(75, 170, 12, 0.589);
+}
+button:nth-of-type(3) {
+    margin-left: 30px;
+}
+.container div:nth-of-type(n) {
+    display: inline-block;
+    width: 30px;
+    height: 100px;
+    margin-right: 20px;
+    margin-top: 20px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: bottom;
+    background-color: rgb(241, 88, 88);
+}
