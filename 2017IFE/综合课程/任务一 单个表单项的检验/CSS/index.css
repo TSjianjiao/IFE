@@ -1,0 +1,36 @@
+form {
+    width: 800px;
+    height: 400px;
+    margin: 200px auto;
+}
+label {
+    margin-right: 57px;
+    font-size: 26px;
+}
+button {
+    width: 104px;
+    height: 65px;
+    border: solid 1px #2A6CA8;
+    border-radius: 6px;
+    background-color: #6171fc;
+    color: #fff;
+}
+input {
+    width: 536px;
+    height: 64px;
+    margin-right: 22px;
+    border: solid 2px #CCCCCC;
+    border-radius: 7px;
+    line-height: 64px;
+}
+input:invalid {
+    border-color: #f80404;
+}
+#notice {
+    margin-left: 112px;
+    font-size: 16px;
+    color: #858585;
+}
+.off {
+    display: none;
+}

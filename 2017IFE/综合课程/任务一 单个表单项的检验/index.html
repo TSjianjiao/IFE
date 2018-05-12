@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    <!-- 这里的target指向下面的iframe阻止提交表单后刷新 -->
+    <form action="" method="POST" target="nm_iframe">
+        <p>
+            <label for="input">名称</label>
+            <input type="text" id="input" placeholder="请输入">
+            <button id="test">验证启动！</button>
+        </p>
+        <p id="notice">必填，长度为4 ~ 16个字符</p>
+    </form>
+    <!-- 这里使用iframe阻止刷新 -->
+    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>  
+<script src="./JS/index.js"></script>
+</body>
+</html>
