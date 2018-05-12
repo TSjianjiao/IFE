@@ -1,0 +1,42 @@
+form {
+    width: 1152px;
+    margin: 0 auto;
+}
+label {
+    margin-right: 40px;
+    margin-left: 30px;
+    text-align: right;
+}
+form p:nth-of-type(5) label {
+    margin-right: 38px;
+    margin-left: 0;
+}
+form p:nth-of-type(2n) {
+    font-size: 24px;
+    color: #A5A5A5;
+    margin-left: 107px;
+    margin-bottom: 54px;
+}
+input {
+    width: 996px;
+    height: 64px;
+    border: solid 2px #CCCCCC;
+    border-radius: 7px;
+    font-size: 24px;
+}
+
+button {
+    width: 156px;
+    height: 64px;
+    margin-left: 954px;
+    border: solid 2px #2B6CA4;
+    border-radius: 7px;
+    background-color: #2F79BA;
+    line-height: 64px;
+    text-align: center;
+    font-size: 27px;
+    color: #fff;
+}
+.off {
+    display: none;
+}

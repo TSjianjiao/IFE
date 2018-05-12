@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    <!-- 防止提交刷新target指向iframe -->
+    <form action="" method="POST" target="iframe">
+        <p>
+            <label for="name">名称</label>
+            <input type="text" id="name">
+        </p>
+        <p id="nameNotice" class="off">必填，长度为4~16个字符</p>
+        
+        <p>
+            <label for="password">密码</label>
+            <input type="password" id="password">
+        </p>
+        <p id="passwordNotice" class="off">请设置密码</p>
+        
+        <p>
+            <label for="comfirmPassword">密码确认</label>
+            <input type="password" id="comfirmPassword">
+        </p>
+        <p id="comfirmPasswordNotice" class="off">请再次输入密码</p>
+        
+        <p>
+            <label for="email">邮箱</label>
+            <input type="text" id="email">
+        </p>
+        <p id="emailNotice" class="off">请输入邮箱</p>
+        
+        <p>          
+            <label for="phoneNumber">手机</label>
+            <input type="text" id="phoneNumber">
+        </p>
+        <p id="phoneNumberNotice" class="off">请输入手机号码</p>
+        
+        <button type="submit" id="submit">提交</button>
+    </form>
+    <!-- 防止提交刷新 -->
+    <iframe id="id_iframe" name="iframe" style="display:none;"></iframe>  
+    <script src="./JS/index.js"></script>
+</body>
+</html>
