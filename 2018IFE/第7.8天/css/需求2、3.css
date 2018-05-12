@@ -1,0 +1,64 @@
+/* 浮动方法 只浮动右边*/
+body{
+    margin: 0;
+    padding: 0;
+}
+.left {
+    width: 200px;
+    height: 600px;
+    float: left;
+    background-color: #ee2222;
+}
+.right {
+    width: 100%;
+    height: 600px;
+    white-space: normal;
+    background-color: #18e775;
+}
+
+/* 定位方法 更改重叠顺序*/
+/* body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.left { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 600px;
+    
+    z-index: 1;
+
+    background-color: #ee2222;
+   
+}
+.right { 
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 600px;
+    margin-left: 10px;
+    background-color: #18e775;
+} */
+
+/* 弹性盒子方法*/
+/* body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.left {
+    flex-shrink: 0;
+    width: 200px;
+    height: 600px;
+    background-color: #ee2222;
+}
+.right {
+    flex-shrink: 0;
+    width: 100%;
+    height: 600px;
+    background-color: #18e775;
+} */
