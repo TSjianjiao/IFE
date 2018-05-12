@@ -163,7 +163,7 @@ function register () {
 function deleteFn () {
     // 要先找到父元素，然后删除
     var parent = selectedNode.parentNode
-    // 删除这个，其下面的子元素都会不见 
+    // 删除子元素
     parent.removeChild(selectedNode);
 }
 /**
