@@ -1,0 +1,80 @@
+form {
+    width: 1152px;
+    height: 198px;
+    margin: 0 auto;
+    margin-top: 140px;
+}
+label {
+    font-size: 29px;
+    line-height: 10px;
+}
+label[for="student"] {
+    margin-left: 108px;
+    margin-right: 373px;
+}
+label[for="city"] {
+    margin-right: 42px;
+}
+label[for="work-unit"] {
+    margin-right: 22px;
+}
+#city {
+    margin-right: 83px;
+}
+.select-box {
+    margin-top: 97px;
+}
+select {
+    font-size: 20px;
+}
+/* 在label前添加伪元素 */
+input[type="radio"] + label::before {
+    /* 不换行空格 */
+    content: "\a0"; 
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 10px;
+    width: 23px;
+    height: 23px;
+    margin-right: 11px;
+    border-radius: 50%;
+    border: 1px solid #9F9F9F;
+    line-height: 33px; 
+}
+/* 设置点击后的样式 */
+/* 这里设置了背景填充区域为内容盒子，也就是内容多大填充多大，
+然后设置了一个巨粗的边框，实现里面白外面蓝 */
+input[type="radio"]:checked + label::before {
+    border: solid 8px #2E98FE;
+    background-color: #fff;
+    background-clip: content-box;
+    width: 9px;
+    height: 9px;
+}
+/* 隐藏原始按钮 */
+/* 如果设置display：none，那么键盘tab建无法选中这个选项 */
+input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+#work-unit {
+    width: 996px;
+    height: 64px;
+    border: solid 2px #CDCDCD;
+    border-radius: 9px;
+}
+#city {
+    width: 344px;
+    height: 64px;
+    border:solid 2px #CDCDCD;
+    border-radius: 9px;
+}
+#school {
+    width: 565px;
+    height: 64px;
+    border:solid 2px #CDCDCD;
+    border-radius: 9px;
+}
+.off {
+    display: none;
+}
