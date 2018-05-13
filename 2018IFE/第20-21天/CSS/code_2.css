@@ -1,0 +1,30 @@
+select {
+    display: none;
+}
+/* 自定义按钮 */
+/* 制造伪元素 */
+input[type="radio"] + label::before {
+    /* 不换行空格 */
+    content: "\a0"; 
+    display: inline-block;
+    vertical-align: middle;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #9F9F9F;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+input[type="radio"]:checked + label::before {
+    border: solid 5px #2E98FE;
+    background-color: #fff;
+    background-clip: content-box;
+    width: 5px;
+    height: 5px;
+}
+/* 剪切掉原来的按钮 不能display:none 不然tab键不能选中 */
+/* clip只能用于absolute上 */
+input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}

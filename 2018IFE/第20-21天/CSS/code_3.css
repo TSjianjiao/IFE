@@ -1,0 +1,11 @@
+.palette {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.palette li {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
