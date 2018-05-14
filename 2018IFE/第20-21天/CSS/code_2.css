@@ -16,7 +16,7 @@ input[type="radio"] + label::before {
     margin-left: 10px;
 }
 input[type="radio"]:checked + label::before {
-    border: solid 5px #2E98FE;
+    border: solid 5px #2e98fe;
     background-color: #fff;
     background-clip: content-box;
     width: 5px;
