@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    <p>
+        操作规则<br>
+        GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长）<br>
+        TUN LEF：向左转（逆时针旋转90度）<br>
+        TUN RIG：向右转（顺时针旋转90度）<br>
+        TUN BAC：向右转（旋转180度）<br>
+        TRA LEF：向屏幕的左侧移动一格，方向不变<br>
+        TRA TOP：向屏幕的上面移动一格，方向不变<br>
+        TRA RIG：向屏幕的右侧移动一格，方向不变<br>
+        TRA BOT：向屏幕的下面移动一格，方向不变<br>
+        MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格<br>
+        MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格<br>
+        MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格<br>
+        MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格<br>
+    </p>
+    <div class="game">
+        <table cellspacing=0 class="checker-board" id="checker-board">
+           <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+           </tr>
+           <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>7</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>9</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+           <tr>
+                <td>10</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+           </tr>
+        </table>
+        <label for="command"></label>
+        <input type="text" id="command" placeholder="前输入指令">
+        <button type="submit" id="actionBtn">执行</button>
+    </div>
+    <script src="./JS/index.js"></script>
+</body>
+</html>

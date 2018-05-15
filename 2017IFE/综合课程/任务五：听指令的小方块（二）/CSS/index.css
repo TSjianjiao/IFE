@@ -1,0 +1,136 @@
+p {
+    float: left;
+    width: 500px;
+    height: 300px;
+}
+.game {
+    float: left;
+    width: 500px;
+    height: 522px;
+    margin: 0 auto;
+}
+input {
+    margin-left: 57px;
+}
+td {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+}
+.checker-board {
+    position: relative;
+}
+.checker-board tr:nth-of-type(1) td {
+    border-bottom: 2px solid #000;
+    border-left: none;
+}
+.checker-board tr:nth-of-type(1) td:first-of-type {
+    border: none;
+}
+.checker-board tr:nth-of-type(1) td:last-of-type {
+    border-right: none;
+}
+.checker-board tr td:first-of-type {
+    border-bottom: none;
+    border-left: none;
+}
+.checker-board tr td:first-of-type,
+.checker-board tr td:last-of-type {
+    border-right: solid 2px #000;
+}
+.checker-board tr:last-of-type td {
+    border-bottom: 2px solid #000;
+}
+.checker-board tr:last-of-type td:first-of-type {
+    border-bottom: none;
+}
+.checker-board td {
+    border-left: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+}
+.head {
+    width: 100%;
+    height: 30%;
+    background-color: #41b4f7;
+}
+.body {
+    width: 100%;
+    height: 70%;
+    background-color: #f15c5c;
+}
+/* 头超前 */
+.target {
+    position: absolute;
+    width: 45px;
+    height: 51px;
+    animation: 1s ease-out forwards;
+    transition: all 1s ease-out;
+}
+/* 顺时针 */
+@keyframes up-right {
+    /* 头从上到右 */
+   100% {
+    transform: rotate(90deg);
+    }
+}
+@keyframes right-buttom {
+    /* 头右到下 */
+    0% {
+        transform: rotate(90deg);
+    }
+    100% {
+        transform: rotate(180deg);
+     }
+ }
+ @keyframes buttom-left {
+     /* 头从下到左 */
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(270deg);
+     }
+ }
+ @keyframes left-up {
+     /* 头从左到前 */
+    0% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+     }
+ }
+/* 逆时针 */
+ @keyframes up-left {
+    /* 头从上到左 */
+    100% {
+     transform: rotate(-90deg);
+    }
+ }
+ @keyframes left-buttom {
+    /* 头从左到下 */
+    0% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+ }
+ @keyframes buttom-right {
+    /* 头从下到右 */
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+ }
+ @keyframes right-up {
+    /* 头从右到上 */
+    0% {
+        transform: rotate(90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+ }
