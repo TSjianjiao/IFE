@@ -157,3 +157,52 @@ function arrayToObj(array) {
 console.log(arrayToObj(menuArr));
 
 
+/********************这个是杨浩麟的方法 感觉是最好的方法********************** */
+// https://github.com/yeung66/ife-basic/blob/master/basic22-24/sort.html 在最后
+// function arr2obj(arr){
+//     var obj = {0:{}}
+//     for(var i=0;i<arr.length;i++){
+//         obj[arr[i][0]]={'name':arr[i][1]};
+//         if(arr[i][2]==-1){
+//             obj[0][arr[i][0]] = obj[arr[i][0]];
+//         }else {
+//             if(obj[arr[i][2]]['subMenu'])
+//             {obj[arr[i][2]]['subMenu'][arr[i][0]] = obj[arr[i][0]]; }
+//             else{
+//                 obj[arr[i][2]]['subMenu']={};
+//                 obj[arr[i][2]]['subMenu'][arr[i][0]] = obj[arr[i][0]];
+//             }                   
+//         }
+//     }
+//     return obj['0'];
+// }
+// console.log(arr2obj(menuArr));
+
+
+/************这个是另外一种函数体的方法******* */
+// function menuObject(arr, s) {
+//     let obj = {};
+//     for (let i = 0, len = arr.length; i < len; i++) {
+//         let place = [], index = 0, o = obj;
+//         // 获取子菜单级数，并且将父级链存放在place中
+//         while ((index = arr[i][1].indexOf(s, index)) !== -1) {
+//             place.push(arr[i][1].slice(0, index));
+//             index += s.length;
+//         }
+//         // 找到菜单在链条中的位置并存放在o中
+//         for (let i = 0, len = place.length; i < len; i++) {
+//             for (let j in o) {
+//                 if (o.hasOwnProperty(j)) {
+//                     if (o[j].name === place[i]) {
+//                         o[j].subMenu = o[j].subMenu || {};
+//                         o = o[j].subMenu;
+//                         break;
+//                     }
+//                 }
+//             }
+//         }
+//         o[arr[i][0]] = {name: arr[i][1]};
+//     }
+//     return obj;
+// }
+// console.log(menuObject(menuArr, '-'));
