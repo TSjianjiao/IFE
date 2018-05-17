@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 400px;
+            height: 300px;
+            background-color: orange;
+            position: absolute;
+            text-align: center;
+            color: #ffffff;
+        }
+        #title {
+            width: 100%;
+            height: 2em;
+            line-height: 2em;
+            background-color: #999999;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="title">按住拖动</div>
+    </div>
+    
+    <script type="text/javascript">        
+        var box = document.getElementById('box');        
+        var title = document.getElementById('title');        
+        //0.声明一个开关变量        
+        var off = 0;        
+        //0.1声明一个变量一保存鼠标与盒子之间的距离        
+        var cur = {};        
+        //1.给标题添加鼠标按下事件        
+        title.onmousedown = function(e){                            
+            off = 1;
+            //1.1 计算鼠标位置-盒子到页面的位置，得到一个差，永远不变
+            cur.x = e.clientX-box.offsetLeft;
+            cur.y = e.clientY-box.offsetTop;            
+        }        
+        //2.添加鼠标移动事件  
+        //给document添加，不是对某个元素，因为定位是相对于整个页面      
+        document.onmousemove = function(e){            
+            //2.1判断按下的开关状态  如果是真再运行            
+            if(!off) return;
+            var left = e.clientX - cur.x;            
+            var tops = e.clientY - cur.y;
+            //限制box不超出浏览器
+            left = left<0?0:left;
+            tops = tops<0?0:tops;
+            left = left >= window.innerWidth-400 ? window.innerWidth-400 : left;
+            tops = tops >= window.innerHeight-300 ? window.innerHeight-300 : tops;
+            box.style.left = left+'px';
+            box.style.top = tops+'px';            
+        }        
+        //3.添加鼠标抬起事件
+        title.onmouseup = title.onmouseout= function(){            
+            console.log('鼠标抬起');            
+            off = 0;            
+        }            
+    </script>
+</body>
+</html>

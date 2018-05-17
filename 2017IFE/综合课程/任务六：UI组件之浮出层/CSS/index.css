@@ -1,0 +1,61 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+.content {
+    height: 2000px;
+    background-color: #36e996;
+}
+
+/* 浮出层样式 */
+.pop-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-color: #000;
+    z-index: 6000;
+}
+.pop {
+    /* 要让它可以移动肯定不能设置fixed */
+    /* 但是又要让它固定在屏幕中间，所以用js解决问题 */
+    position: absolute;
+    /* position: sticky; */
+    padding: 15px;
+    padding-top: 0;
+    border: solid 1px #000;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 6001;
+}
+.pop button {
+    float: right;
+    height: 11%;
+    width: 20%;
+    border: solid 1px #000;
+    background-color: #858282;
+    margin-top: 5px;
+}
+.pop button:first-of-type {
+    margin-left: 20px;
+}
+.pop-title {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    left: 0;
+    border-bottom: solid 1px #000;
+    background-color: #ebe84c;
+}
+.pop-container:hover {
+    cursor: e-resize;
+}
+.pop-title:hover {
+    cursor: move; 
+}
+.pop-content {
+    width: 100%;
+    height: 80%;
+    background-color: #50ceee;
+}
