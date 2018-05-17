@@ -45,6 +45,16 @@ function objToArray(obj) {
 
 // console.log(objToArray(scoreObject));
 
+// var menuArr = [
+//     [1, "Area1", -1],
+//     [2, "Area2", -1],
+//     [3, "Area1-1", 1],
+//     [4, "Area1-2", 1],
+//     [5, "Area2-1", 2],
+//     [6, "Area2-2", 2],
+//     [7, "Area1-2-3", 4],
+//     [8, "Area2-2-1", 6],
+// ];
 var menuArr = [
     [1, "Area1", -1],
     [2, "Area2", -1],
@@ -52,8 +62,8 @@ var menuArr = [
     [4, "Area1-2", 1],
     [5, "Area2-1", 2],
     [6, "Area2-2", 2],
-    [7, "Area1-2-3", 4],
-    [8, "Area2-2-1", 6],
+    // [7, "Area1-2-3", 4],
+    // [8, "Area2-2-1", 6],
 ];
 // 如上有一个用来存储多级菜单数据的数组，编写一个函数，将其转为如下的对象
 
@@ -159,24 +169,32 @@ console.log(arrayToObj(menuArr));
 
 /********************这个是杨浩麟的方法 感觉是最好的方法********************** */
 // https://github.com/yeung66/ife-basic/blob/master/basic22-24/sort.html 在最后
-// function arr2obj(arr){
-//     var obj = {0:{}}
-//     for(var i=0;i<arr.length;i++){
-//         obj[arr[i][0]]={'name':arr[i][1]};
-//         if(arr[i][2]==-1){
-//             obj[0][arr[i][0]] = obj[arr[i][0]];
-//         }else {
-//             if(obj[arr[i][2]]['subMenu'])
-//             {obj[arr[i][2]]['subMenu'][arr[i][0]] = obj[arr[i][0]]; }
-//             else{
-//                 obj[arr[i][2]]['subMenu']={};
-//                 obj[arr[i][2]]['subMenu'][arr[i][0]] = obj[arr[i][0]];
-//             }                   
-//         }
-//     }
-//     return obj['0'];
-// }
-// console.log(arr2obj(menuArr));
+function arr2obj(arr){
+    var obj = {0:{}}
+    for(var i=0;i<arr.length;i++){
+        // 每一级的模板
+        obj[arr[i][0]]={'name':arr[i][1]};
+        // 建立第一级
+        if(arr[i][2]==-1){
+            obj[0][arr[i][0]] = obj[arr[i][0]];
+        }
+        // 建立其他级
+        else {
+            // 判断有没有subMenu
+            if(obj[arr[i][2]]['subMenu']) {
+                obj[arr[i][2]]['subMenu'][arr[i][0]] = obj[arr[i][0]]; 
+            }
+            // 没有subMenu
+            else {
+                // 构造一个
+                obj[arr[i][2]]['subMenu']={};
+                obj[arr[i][2]]['subMenu'][arr[i][0]] = obj[arr[i][0]];
+            }                   
+        }
+    }
+    return obj['0'];
+}
+console.log(arr2obj(menuArr));
 
 
 /************这个是另外一种函数体的方法******* */
