@@ -43,18 +43,8 @@ function objToArray(obj) {
     return scoreArray
 }
 
-// console.log(objToArray(scoreObject));
+console.log(objToArray(scoreObject));
 
-// var menuArr = [
-//     [1, "Area1", -1],
-//     [2, "Area2", -1],
-//     [3, "Area1-1", 1],
-//     [4, "Area1-2", 1],
-//     [5, "Area2-1", 2],
-//     [6, "Area2-2", 2],
-//     [7, "Area1-2-3", 4],
-//     [8, "Area2-2-1", 6],
-// ];
 var menuArr = [
     [1, "Area1", -1],
     [2, "Area2", -1],
@@ -62,8 +52,8 @@ var menuArr = [
     [4, "Area1-2", 1],
     [5, "Area2-1", 2],
     [6, "Area2-2", 2],
-    // [7, "Area1-2-3", 4],
-    // [8, "Area2-2-1", 6],
+    [7, "Area1-2-3", 4],
+    [8, "Area2-2-1", 6],
 ];
 // 如上有一个用来存储多级菜单数据的数组，编写一个函数，将其转为如下的对象
 
@@ -164,15 +154,35 @@ function arrayToObj(array) {
     }
     return menuObject;
 }
+console.log('我的方法');
 console.log(arrayToObj(menuArr));
 
 
 /********************这个是杨浩麟的方法 感觉是最好的方法********************** */
 // https://github.com/yeung66/ife-basic/blob/master/basic22-24/sort.html 在最后
+// 主要用到的性质是  eg:obj1 = {1:obj2{}}
+//                     如果对象obj2在其他地方更新了，更换了数据，obj1也自动更新
+// obj整个的样子：
+// 0:{1: {…}, 2: {…}}
+// 1:{name: "Area1", subMenu: {…}}
+// 2:{name: "Area2", subMenu: {…}}
+// 3:{name: "Area1-1"}
+// 4:{name: "Area1-2", subMenu: {…}}
+// 5:{name: "Area2-1"}
+// 6:{name: "Area2-2", subMenu: {…}}
+// 7:{name: "Area1-2-3"}
+// 8:{name: "Area2-2-1"}
+// 比如 添加Area1-2-3：首先在obj保存节点Area1-2-3，数组中对应的是[7, "Area1-2-3", 4]，
+// 因为所有的子节点父节点祖父节点等等都被单独保存在了0~8所以查找obj的时候不用一层一层找。
+// Area1-2-3对应的父id是4，那么直接找obj[4]是否有subMenu，有就直接把Area1-2-3写入obj[4]['subMenu']
+// 没有就创建一个obj[4]['subMenu'] = {},再写入。而且这样改变是时候obj[0]里面的对象也会改变。这样就完成了创建菜单
+
 function arr2obj(arr){
-    var obj = {0:{}}
+    // 主目录的存放位置
+    var obj = {0:{}};
     for(var i=0;i<arr.length;i++){
-        // 每一级的模板
+        // 保存节点，因为0已经用过了，所以后面就对应起来了eg:array[0] = [1, areal1, -1]
+        //                                               obj{0:{}, 1:{name:areal1}....};
         obj[arr[i][0]]={'name':arr[i][1]};
         // 建立第一级
         if(arr[i][2]==-1){
@@ -180,7 +190,7 @@ function arr2obj(arr){
         }
         // 建立其他级
         else {
-            // 判断有没有subMenu
+            // 判断父级有没有subMenu
             if(obj[arr[i][2]]['subMenu']) {
                 obj[arr[i][2]]['subMenu'][arr[i][0]] = obj[arr[i][0]]; 
             }
@@ -192,8 +202,12 @@ function arr2obj(arr){
             }                   
         }
     }
-    return obj['0'];
+    // 只返回键值0对应的值
+    return obj['0']
+    // 可以试试返回全部是什么样子
+    // return obj
 }
+console.log('别人的方法');
 console.log(arr2obj(menuArr));
 
 
