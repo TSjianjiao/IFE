@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    <!-- 没怎么看懂要求 -->
+    <!-- <div id="dl-container">
+    </div> -->
+    <div class="pop-mask" id="pop-mask"></div>
+    <div class="pop" id="pop">
+        <div class="pop-title" id="pop-title"><p>选择排序方法</p><p>不选择按照默认方法</p></div>
+        <div class="pop-content" id="pop-content">
+            <ul>
+                <!-- 在里面自定义了属性method -->
+                <li method="minTomax">从小到大</li>
+                <li method="maxTomin">从大到小</li>
+                <li method="byScore">所选科目分数分数相同总分高在前</li>
+                <li method="bySubject">总分相同所选科目分数高在前</li>
+            </ul>
+        </div>
+        <button type="button" id="cancel">取消</button>
+        <button type="button" id="comfirm">确认</button>
+    </div>
+    <script src="./JS/index.js"></script>
+    <script src="./JS/pop.js"></script>
+</body>
+</html>

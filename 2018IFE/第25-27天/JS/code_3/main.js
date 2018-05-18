@@ -181,10 +181,13 @@ function reflashDate(year, month) {
     // 天数的选单
     var dateSelect = document.getElementById('date-select');
     // 先删除所有天数选项 注意遍历删除子节点的时候要倒着来 因为序号会变
-    var childLen = dateSelect.children.length;
-    for (var i = childLen - 1; i >= 0; i--) {
-        dateSelect.removeChild(dateSelect.children[i]);
-    }
+    // var childLen = dateSelect.children.length;
+    // for (var i = childLen - 1; i >= 0; i--) {
+    //     dateSelect.removeChild(dateSelect.children[i]);
+    // }
+    
+    // 这样删除节点不就简单很多了嘛
+    dateSelect.innerHTML = '';
     // 获取新的天数列表
     var dateList = getDateList(year, month);
     // 这段和createSlect函数一样
