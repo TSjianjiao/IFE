@@ -10,7 +10,7 @@ var cancelBtn =  document.getElementById('cancel');
 // 取消键关闭悬浮层
 cancelBtn.addEventListener('click',  function() {displayPop('hidden');});
 // 按下确认键开始排序
-comfirmBtn.addEventListener('click', sortFn);
+comfirmBtn.addEventListener('click', function () {sortFn(sortMode);});
 comfirmBtn.addEventListener('click',  function() {displayPop('hidden');});
 // 点击方法li，修改mode
 popContent.addEventListener('click', function (e){ var targetLi = e.target;
@@ -20,23 +20,7 @@ popContent.addEventListener('click', function (e){ var targetLi = e.target;
                                                     sortMode = targetLi.getAttribute('method');
                                                 }          
                                             });
-/**
- * i标签事件注册函数
- */                                        
-function iTagRregister() {
-    // 给所有的i标签也就是上下排序按钮注册点击事件 上下不一样 偶数是从大到小 奇数是从小到大
-    var iList = document.querySelectorAll('.container i');
-    for (var i = 0; i < iList.length; i++) {
-        iList[i].addEventListener('click',  function(e) {displayPop('visable'); 
-                                                        whitchCol = e.target.parentElement.id});
-        if (i % 2 === 0) {
-            iList[i].addEventListener('click',  function() {sortMode = 'maxTomin';});
-        }
-        else {
-            iList[i].addEventListener('click',  function() {sortMode = 'minTomax';});
-        }
-    }      
-}                                           
+
 // 假设有数据
 var data = {0:{name:'张三', chinese:'25', math:'22', eglish:'67', score:'123'},
             1:{name:'李四', chinese:'90', math:'34', eglish:'32', score:'442'},
@@ -45,11 +29,33 @@ var data = {0:{name:'张三', chinese:'25', math:'22', eglish:'67', score:'123'}
 
 // 对象转数组
 var dataArr = objToArr(data);
-console.log(dataArr.slice());
-// 动态更新列表
-// displayData(dataArr);
-// displayData(dataArr);
-// displayData(dataArr);
+console.log(dataArr);
+// 显示列表
+displayData(dataArr);
+
+/**
+ * i标签事件注册函数
+ */                                        
+function iTagRregister() {
+    // 用事件代理
+    var dlContainer = document.getElementById('dl-container');
+    dlContainer.addEventListener('click', function (e) {
+        var target = e.target;
+        // 如果点击目标是i标签
+        if (target.nodeName === 'I') {
+            // 先显示悬浮层
+            displayPop('visable');
+            // 更新判断那一竖栏被点击
+            whitchCol = target.getAttribute('theme');
+            if (target.getAttribute('dir') === 'down') {
+                sortFn('maxTomin');
+            }
+            else if (target.getAttribute('dir') === 'up') {
+                sortFn('minTomax');
+            }
+        }
+    });
+}                                           
 
 /**
  * 对象转数组 方便使用
@@ -72,7 +78,6 @@ function objToArr(obj) {
     return result
 }
 
-
 /**
  * 显示输入数据
  * @param {array} input
@@ -81,7 +86,7 @@ function displayData(input) {
     var bodyObj = document.getElementsByTagName('body')[0];
     var dlContainer = document.getElementById('dl-container');
     // 先清除所有表单
-    console.log(dlContainer)
+    // console.log(dlContainer)
     if (dlContainer !== null) {
         bodyObj.removeChild(dlContainer);
     }
@@ -89,28 +94,30 @@ function displayData(input) {
     var dlConObj = document.createElement('div');
     dlConObj.setAttribute('id', 'dl-container');
     bodyObj.appendChild(dlConObj);
-    //创建 dl dt 这里pop了最后一项也就是key列表
-    var tt = [];
-    tt = input;
-    var keyList = tt.pop();
-    for (x in keyList) {
+    // 创建 dl dt 这里slice了最后一项也就是key列表
+    // 这里使用的是slice代替pop，因为pop操作会改变原数组！！
+    var keyList = input.slice(4, 5);
+    for (x in keyList[0]) {
         // 创建dl
         var dlObj = document.createElement('dl');
         // 创建dt
         var dtObj = document.createElement('dt');
-        dtObj.innerHTML = `${keyList[x]}
-                            <i class="icon iconfont">&#xe94b;</i>
-                            <i class="icon iconfont">&#xe94c;</i>`;
-        dtObj.setAttribute('id', keyList[x]);
+        // 这里给i标签赋予了一个自定义属性dir 来区分上下箭头
+        // 增加一个theme属性区分是哪一栏点击
+        dtObj.innerHTML = `${keyList[0][x]}
+                            <i class="icon iconfont" dir='down' theme=${keyList[0][x]}>&#xe94b;</i>
+                            <i class="icon iconfont" dir='up' theme=${keyList[0][x]}>&#xe94c;</i>`;
+        dtObj.setAttribute('id', keyList[0][x]);
         dlObj.appendChild(dtObj);
         dlConObj.appendChild(dlObj);
     }
     var dtList = document.querySelectorAll('dt');
     // 创建dd
-    for (var i = 0; i < input.length; i++) {
-        for (var k = 0; k < input[i].length; k++) {
+    var value = input.slice(0, 4);
+    for (var i = 0; i < value.length; i++) {
+        for (var k = 0; k < value[i].length; k++) {
             var ddObj = document.createElement('dd');
-            ddObj.innerHTML = input[i][k];
+            ddObj.innerHTML = value[i][k];
             dtList[k].appendChild(ddObj); 
         }
     }
@@ -118,63 +125,44 @@ function displayData(input) {
     iTagRregister();
 }
 
-/******一系列比较函数**********/
-
-/**
- * 从大到小
- * @param {*} a
- * @param {*} b
- */
-function compareBymaxTomin(a, b) {
-    // if ()
-}
-/**
- * 从小到大
- * @param {*} a
- * @param {*} b
- */
-function compareByminTomax(a, b) {
-
-}
-/**
- * 同样总分按单科
- * @param {*} a
- * @param {*} b
- */
-function compareBySubject(a, b) {
-
-}
-/**
- * 同样单科按总分
- * @param {*} a
- * @param {*} b
- */
-function compareByScore(a, b) {
-
-}
-
 /**
  * 排序
  * @param {string} mode
  */
 function sortFn(mode) {
-    var temp = dataArr;
     // 把最后一行数据去掉
-    var lastOne = temp.pop()
+    var temp = dataArr.pop();
+    // 根据点的哪一竖栏排序
+    var index = {'name':0, 'chinese':1, 'math':2, 'eglish':3, 'score':4};
+    index = index[whitchCol];
+    // 排序是会改变原数组的
     if (mode === 'maxTomin') {
-        temp.sort(compareBymaxTomin); 
+        dataArr.sort(function(a, b) {
+            if(a[index] - b[index] < 0) {
+                return 1
+            }
+            else if (a[index] - b[index] > 0) {
+                return -1
+            }
+            else {
+                return 0
+            }
+        }); 
     }
     else if (mode === 'minTomax') {
-        temp.sort(compareByminTomax);
+        dataArr.sort(function (a, b) {
+            if(a[index] - b[index] < 0) {
+                return -1
+            }
+            else if (a[index] - b[index] > 0) {
+                return 1
+            }
+            else {
+                return 0
+            }
+        });
     }
-    else if (mode === 'byScore'){
-        temp.sort(compareByScore);
-    }
-    else if (mode === 'bySubject') {
-        temp.sort(compareBySubject);
-    }
-    // 最后一行加回去 不然更新显示会出错
-    temp.push(lastOne)
+    dataArr.push(temp);
     // 更新显示
-    displayData(temp);
+    displayData(dataArr);
 }

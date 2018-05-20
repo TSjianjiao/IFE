@@ -42,7 +42,7 @@ dd {
     line-height: 60px;
     background-color: #8dda13;
 }
-.container i:hover {
+#dl-container i:hover {
     cursor: pointer;
 }
 /* 浮出层样式 */
