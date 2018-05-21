@@ -53,7 +53,7 @@ wrapper.addEventListener('click', function (e){
     if (e.target.nodeName === 'LI') {
         // 解码输入
         text = decodeHtml(e.target.innerText);
-        slecteNotice(text);
+        selecteNotice(text);
     }
 });
 // 优先显示鼠标选择的目标
@@ -90,9 +90,9 @@ function getInput(input) {
  */
 function createNotice(input) {
     var noticeList = [];
-    var index = input.indexOf('@')
+    var index = input.indexOf('@');
     var afterInput;
-    var preInput
+    var preInput;
     // 如果输入包含@
     if ( index !== -1) {
         // 用来组合提示
@@ -174,7 +174,7 @@ function setOn() {
  * 用户选择提示
  * @param {string} text
  */
-function slecteNotice(text) {
+function selecteNotice(text) {
     // 更新提示
     emailInput.value = text;
     // 设置焦点
@@ -223,15 +223,14 @@ function selectOp(key) {
     var childrenList = ulObj.children;
     var currentLi;
     // 找到当前为选中状态的Li
-    for (x of childrenList) {
-        if (x.getAttribute('class') === 'selected') {
-            currentLi = x;
-            // 清除选中状态
-            currentLi.removeAttribute('class');
-        }
-    }
-    if (currentLi === undefined) {
+    currentLi = document.querySelector('.email-sug .selected');
+    
+    if (currentLi === null) {
         childrenList[0].setAttribute('class', 'selected');
+    }
+    else {
+        // 清除选中状态
+        currentLi.removeAttribute('class');
     }
     // 如果是上键
     if (key === 'ArrowUp') {
@@ -254,7 +253,7 @@ function selectOp(key) {
         // 解码提示
         var text = decodeHtml(currentLi.innerText);
         // 输入input
-        slecteNotice(text);
+        selecteNotice(text);
         // 设置焦点
         emailInput.focus();
         // 隐藏提示
