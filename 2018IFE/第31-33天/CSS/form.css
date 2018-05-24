@@ -1,0 +1,12 @@
+#region-radio-wrapper,
+#product-radio-wrapper {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: solid 1px #000;
+}
+tr,
+td {
+    padding: 10px;
+    border:solid 1px #000;
+    text-align: center;
+}
