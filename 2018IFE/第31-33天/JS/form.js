@@ -1,6 +1,14 @@
 /**
  * @file 表单部分
  */
+ module.exports = {
+    checkBoxEvent:checkBoxEvent,
+    myFilter:myFilter,
+    displayData:displayData,
+    sortData:sortData,
+    mergeData:mergeData
+ }
+
 // 记录选择
 var selectedProduct = [];
 var selectedRegion = [];
