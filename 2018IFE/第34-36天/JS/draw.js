@@ -205,291 +205,286 @@ drawLineChart.prototype.drawMultiLineByCanvas = function (inputData) {
 }
 
 /**
- * 柱状图构造函数
+ * drawBarChart类
  */
-function drawBarChart() {
-    this.inputData = null;
-    this.svg = document.getElementById('my-svg');
-    // 柱状图绘制区域的高度，宽度
-    this.svgWidth = 640;
-    this.svgHeight = 400;
-    // 坐标区域宽度高度
-    this.axisWidth = 780;
-    this.axisHeight = 300;
-    // 每一个柱子的宽度及柱子的间隔宽度
-    this.barWidth = 35;
-    this.barSpace = 15;
-    // 柱子颜色，轴的颜色
-    this.barColor = '#2e70eb';
-    this.axisColor = '#5a5d61';
-}
-
-/**
- * 绘制柱状图
- * @param {array} inputdata 
- */
-drawBarChart.prototype.drawBarBySvg = function (inputData) {
-    this.svg.innerHTML = '';
-    this.svg.setAttribute('width', this.svgWidth);
-    this.svg.setAttribute('height', this.svgHeight);
-    // 保存数据
-    var data = inputData[0].sale.slice(0);
-    // 拿到柱状图中的最大值Max
-    // var maxData = data.sort((a, b)=>{return a-b}).pop();
-    var maxData = Math.max(...data);
-    // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例
-    var scale = this.axisHeight/maxData;
-    // 绘制横轴及纵轴
-    var axisPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    var axisPathOrder = `M 25 ${this.axisHeight-10} h ${this.axisWidth-20} m ${-this.axisWidth+20} 0 v ${-this.axisHeight+20}`;
-    axisPath.setAttribute('d', axisPathOrder);
-    axisPath.setAttribute('stroke', this.axisColor);
-    axisPath.setAttribute('stroke-width', '2px');
-    this.svg.appendChild(axisPath);
-    // 绘制纵轴标签
-    var YLabel;
-    if (maxData < 100)  bias = 20;  
-    else bias = 50;
-    YLabel = bias;
-    while(maxData > YLabel) {
-        var YText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        var YPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        YText.setAttribute('stroke', this.axisColor);
-        YText.setAttribute('style', 'font-size:16px');
-        YText.setAttribute('x', '0');
-        YText.setAttribute('y', `${this.axisHeight - YLabel * scale - 5}`);
-        YText.innerHTML = `${YLabel}`;
-        this.svg.appendChild(YText);
-        // 画网格
-        var YPathOrder = `M 26 ${this.axisHeight - YLabel * scale - 10} h ${this.axisWidth - 26}`
-        YPath.setAttribute('d', YPathOrder);
-        YPath.setAttribute('stroke', '#d8d7d7');
-        YPath.setAttribute('stroke-width', '2px');
-        this.svg.appendChild(YPath);
-        YLabel += bias;
+class drawBarChart {
+    // 构造函数
+    constructor () {
+        this.inputData = null;
+        this.svg = document.getElementById('my-svg');
+        // 柱状图绘制区域的高度，宽度
+        this.svgWidth = 640;
+        this.svgHeight = 400;
+        // 坐标区域宽度高度
+        this.axisWidth = 780;
+        this.axisHeight = 300;
+        // 每一个柱子的宽度及柱子的间隔宽度
+        this.barWidth = 35;
+        this.barSpace = 15;
+        // 柱子颜色，轴的颜色
+        this.barColor = '#2e70eb';
+        this.axisColor = '#5a5d61';
     }
-    // 遍历画出每个月的柱状图
-    inputData[0].sale.forEach(function (item, index) {
-        // 计算将要绘制柱子的高度和位置
-        var currentBarHeight =  item * scale;
-        // index * barWidth + (index + 1) * barSpace
-        var currentBarX = index * (this.barWidth + this.barSpace) + this.barSpace;
-        // 绘制每一个柱子
-        var barPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        var barPathOrder = `M 25 ${this.axisHeight-10-1} m ${currentBarX} 0 v ${-currentBarHeight} h ${this.barWidth} v ${currentBarHeight}`;
-        barPath.setAttribute('d', barPathOrder);
-        barPath.setAttribute('fill', this.barColor);
-        this.svg.appendChild(barPath);
-        // 绘制横坐标刻度
-        var XText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        XText.setAttribute('stroke', this.axisColor);
-        XText.setAttribute('style', 'font-size:16px');
-        XText.innerHTML = `${index+1}月`
-        XText.setAttribute('x', `${currentBarX+this.barWidth/2}`);
-        XText.setAttribute('y', `${this.axisHeight+5}`);
-        this.svg.appendChild(XText);
-    }, this); 
-}
-
-/**
- * 绘制多个柱状图
- * @param {array} inputdata 
- */
-drawBarChart.prototype.drawMultiBarBySvg = function (inputData) {
-    this.svg.innerHTML = '';
-    this.svg.setAttribute('width', this.svgWidth);
-    this.svg.setAttribute('height', this.svgHeight);
-    // 拿到折线图中的最大值Max
-    // 保存数据 将所选数据平铺
-    var data = [];
-    inputData.forEach(function (item, index) {
-        // 只保存销量数据
-        item.sale.forEach(function(item, index) {
-            data.push(item);
-        });
-    });
-    // 拿到所有数据中的最大值Max
-    // var maxData = data.sort((a, b)=>{return a-b}).pop();
-    var maxData = Math.max(...data);
-    // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例
-    var scale = this.axisHeight/maxData;
-    // 绘制横轴及纵轴
-    var axisPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    var axisPathOrder = `M 25 ${this.axisHeight-10} h ${this.axisWidth-20} m ${-this.axisWidth+20} 0 v ${-this.axisHeight+20}`;
-    axisPath.setAttribute('d', axisPathOrder);
-    axisPath.setAttribute('stroke', this.axisColor);
-    axisPath.setAttribute('stroke-width', '2px');
-    this.svg.appendChild(axisPath);
-    // 绘制纵轴标签
-    var YLabel;
-    if (maxData < 100)  bias = 20;  
-    else bias = 50;
-    YLabel = bias;
-    while(maxData > YLabel) {
-        var YText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        var YPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        YText.setAttribute('stroke', this.axisColor);
-        YText.setAttribute('style', 'font-size:16px');
-        YText.setAttribute('x', '0');
-        YText.setAttribute('y', `${this.axisHeight - YLabel * scale - 5}`);
-        YText.innerHTML = `${YLabel}`;
-        this.svg.appendChild(YText);
-        // 画网格
-        var YPathOrder = `M 26 ${this.axisHeight - YLabel * scale - 10} h ${this.axisWidth - 26}`
-        YPath.setAttribute('d', YPathOrder);
-        YPath.setAttribute('stroke', '#d8d7d7');
-        YPath.setAttribute('stroke-width', '2px');
-        this.svg.appendChild(YPath);
-        YLabel += bias;
-    }
-    // 判断使用产品还是区域聚合柱状图
-    // true按照产品聚合
-    var flag;
-    [...document.querySelectorAll('#table-wrapper td')].forEach(function(item, index){
-        // 元素有rowspan属性
-        if(item.hasAttribute('rowspan')) {
-            flag = inputData.filter(function (i) {
-                    return item.innerHTML === i.product
-                });
-            // 如果含有rowspan的元素内容是product的 flag为true
-            if(inputData.filter((i)=>{return item.innerHTML === i.product}).length !== 0) return flag = true;
-            else return flag = false;    
+    // 单个柱状图绘制
+    drawBarBySvg (inputData) {
+        this.svg.innerHTML = '';
+        this.svg.setAttribute('width', this.svgWidth);
+        this.svg.setAttribute('height', this.svgHeight);
+        // 保存数据
+        var data = inputData[0].sale.slice(0);
+        // 拿到柱状图中的最大值Max
+        // var maxData = data.sort((a, b)=>{return a-b}).pop();
+        var maxData = Math.max(...data);
+        // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例
+        var scale = this.axisHeight/maxData;
+        // 绘制横轴及纵轴
+        var axisPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        var axisPathOrder = `M 25 ${this.axisHeight-10} h ${this.axisWidth-20} m ${-this.axisWidth+20} 0 v ${-this.axisHeight+20}`;
+        axisPath.setAttribute('d', axisPathOrder);
+        axisPath.setAttribute('stroke', this.axisColor);
+        axisPath.setAttribute('stroke-width', '2px');
+        this.svg.appendChild(axisPath);
+        // 绘制纵轴标签
+        var YLabel;
+        if (maxData < 100)  bias = 20;  
+        else bias = 50;
+        YLabel = bias;
+        while(maxData > YLabel) {
+            var YText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            var YPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            YText.setAttribute('stroke', this.axisColor);
+            YText.setAttribute('style', 'font-size:16px');
+            YText.setAttribute('x', '0');
+            YText.setAttribute('y', `${this.axisHeight - YLabel * scale - 5}`);
+            YText.innerHTML = `${YLabel}`;
+            this.svg.appendChild(YText);
+            // 画网格
+            var YPathOrder = `M 26 ${this.axisHeight - YLabel * scale - 10} h ${this.axisWidth - 26}`
+            YPath.setAttribute('d', YPathOrder);
+            YPath.setAttribute('stroke', '#d8d7d7');
+            YPath.setAttribute('stroke-width', '2px');
+            this.svg.appendChild(YPath);
+            YLabel += bias;
         }
-    });
-    if (flag) {
-        // 聚合的柱体数量
-        var barNum;
-        var productNum = 0;
-        var temp = '';
-        // 根据相同product名称计算数量
-        inputData.forEach(function (item, index) {
-            // 如果和前一个名字不同
-            if(item.product !== temp) {
-                productNum++;
-                barNum = 1;
-                temp = item.product;
-            }
-            else barNum++;
-        });
-        // 每个柱体的宽度
-        var perBarWidth = this.barWidth / (barNum * productNum);
-        // 每个月数据总宽度
-        var perMonthWidth =  barNum * productNum * perBarWidth;
-        // 每个月数据间隔
-        var currentBarX = this.barSpace;
-        // 数据标签间隔
-        var dataLabelSpace = 55 ; 
-        // 挨着数据顺序画柱子  每隔barNum个柱子换颜色重置  每隔barNum * productNum重复12个月 加间隔
-        // 第一层循环随便找了一个12个月的数据，仅仅是为了循环12次而已
-        inputData[0].sale.forEach(function(Item, monthIndex) {
-            // 更换颜色 标志
-            var colorIndex = -1;
-            var preName = '';
-            inputData.forEach(function(item, index) {
-            // 每行数据的同一个月销售量
+        // 遍历画出每个月的柱状图
+        inputData[0].sale.forEach(function (item, index) {
             // 计算将要绘制柱子的高度和位置
-            var currentBarHeight = item.sale[monthIndex] * scale;
-            // 每行数据的标签
-            var eachLabel = item.region;
-            // 更换颜色判断
-            // 如果名字和上一个不相同
-            if(item.product !== preName) {
-                // 更新标志位
-                colorIndex++;
-                preName = item.product;
-                // 绘制标签 指示颜色对应的数据
-                // 只画一次
+            var currentBarHeight =  item * scale;
+            // index * barWidth + (index + 1) * barSpace
+            var currentBarX = index * (this.barWidth + this.barSpace) + this.barSpace;
+            // 绘制每一个柱子
+            var barPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            var barPathOrder = `M 25 ${this.axisHeight-10-1} m ${currentBarX} 0 v ${-currentBarHeight} h ${this.barWidth} v ${currentBarHeight}`;
+            barPath.setAttribute('d', barPathOrder);
+            barPath.setAttribute('fill', this.barColor);
+            this.svg.appendChild(barPath);
+            // 绘制横坐标刻度
+            var XText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            XText.setAttribute('stroke', this.axisColor);
+            XText.setAttribute('style', 'font-size:16px');
+            XText.innerHTML = `${index+1}月`
+            XText.setAttribute('x', `${currentBarX+this.barWidth/2}`);
+            XText.setAttribute('y', `${this.axisHeight+5}`);
+            this.svg.appendChild(XText);
+        }, this); 
+    }
+    // 多个柱状图绘制
+    drawMultiBarBySvg (inputData) {
+        this.svg.innerHTML = '';
+        this.svg.setAttribute('width', this.svgWidth);
+        this.svg.setAttribute('height', this.svgHeight);
+        // 拿到折线图中的最大值Max
+        // 保存数据 将所选数据平铺
+        var data = [];
+        inputData.forEach(function (item, index) {
+            // 只保存销量数据
+            item.sale.forEach(function(item, index) {
+                data.push(item);
+            });
+        });
+        // 拿到所有数据中的最大值Max
+        // var maxData = data.sort((a, b)=>{return a-b}).pop();
+        var maxData = Math.max(...data);
+        // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例
+        var scale = this.axisHeight/maxData;
+        // 绘制横轴及纵轴
+        var axisPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        var axisPathOrder = `M 25 ${this.axisHeight-10} h ${this.axisWidth-20} m ${-this.axisWidth+20} 0 v ${-this.axisHeight+20}`;
+        axisPath.setAttribute('d', axisPathOrder);
+        axisPath.setAttribute('stroke', this.axisColor);
+        axisPath.setAttribute('stroke-width', '2px');
+        this.svg.appendChild(axisPath);
+        // 绘制纵轴标签
+        var YLabel;
+        if (maxData < 100)  bias = 20;  
+        else bias = 50;
+        YLabel = bias;
+        while(maxData > YLabel) {
+            var YText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            var YPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            YText.setAttribute('stroke', this.axisColor);
+            YText.setAttribute('style', 'font-size:16px');
+            YText.setAttribute('x', '0');
+            YText.setAttribute('y', `${this.axisHeight - YLabel * scale - 5}`);
+            YText.innerHTML = `${YLabel}`;
+            this.svg.appendChild(YText);
+            // 画网格
+            var YPathOrder = `M 26 ${this.axisHeight - YLabel * scale - 10} h ${this.axisWidth - 26}`
+            YPath.setAttribute('d', YPathOrder);
+            YPath.setAttribute('stroke', '#d8d7d7');
+            YPath.setAttribute('stroke-width', '2px');
+            this.svg.appendChild(YPath);
+            YLabel += bias;
+        }
+        // 判断使用产品还是区域聚合柱状图
+        // true按照产品聚合
+        var flag;
+        [...document.querySelectorAll('#table-wrapper td')].forEach(function(item, index){
+            // 元素有rowspan属性
+            if(item.hasAttribute('rowspan')) {
+                flag = inputData.filter(function (i) {
+                        return item.innerHTML === i.product
+                    });
+                // 如果含有rowspan的元素内容是product的 flag为true
+                if(inputData.filter((i)=>{return item.innerHTML === i.product}).length !== 0) return flag = true;
+                else return flag = false;    
+            }
+        });
+        if (flag) {
+            // 聚合的柱体数量
+            var barNum;
+            var productNum = 0;
+            var temp = '';
+            // 根据相同product名称计算数量
+            inputData.forEach(function (item, index) {
+                // 如果和前一个名字不同
+                if(item.product !== temp) {
+                    productNum++;
+                    barNum = 1;
+                    temp = item.product;
+                }
+                else barNum++;
+            });
+            // 每个柱体的宽度
+            var perBarWidth = this.barWidth / (barNum * productNum);
+            // 每个月数据总宽度
+            var perMonthWidth =  barNum * productNum * perBarWidth;
+            // 每个月数据间隔
+            var currentBarX = this.barSpace;
+            // 数据标签间隔
+            var dataLabelSpace = 55 ; 
+            // 挨着数据顺序画柱子  每隔barNum个柱子换颜色重置  每隔barNum * productNum重复12个月 加间隔
+            // 第一层循环随便找了一个12个月的数据，仅仅是为了循环12次而已
+            inputData[0].sale.forEach(function(Item, monthIndex) {
+                // 更换颜色 标志
+                var colorIndex = -1;
+                var preName = '';
+                inputData.forEach(function(item, index) {
+                // 每行数据的同一个月销售量
+                // 计算将要绘制柱子的高度和位置
+                var currentBarHeight = item.sale[monthIndex] * scale;
+                // 每行数据的标签
+                var eachLabel = item.region;
+                // 更换颜色判断
+                // 如果名字和上一个不相同
+                if(item.product !== preName) {
+                    // 更新标志位
+                    colorIndex++;
+                    preName = item.product;
+                    // 绘制标签 指示颜色对应的数据
+                    // 只画一次
+                    if (monthIndex === 0) {
+                        var dataLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                        dataLabel.setAttribute('stroke', this.barColor[colorIndex]);
+                        dataLabel.setAttribute('style', 'font-size:16px');
+                        dataLabel.innerHTML = `${preName}`
+                        dataLabel.setAttribute('x', `${dataLabelSpace += dataLabelSpace}`);
+                        dataLabel.setAttribute('y', '20');
+                        this.svg.appendChild(dataLabel);
+                    }
+                }
+                // 绘制每一个柱子
+                var barPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                var barPathOrder = `M 25 ${this.axisHeight-10-1} m ${currentBarX} 0 v ${-currentBarHeight} h ${perBarWidth} v ${currentBarHeight}`;
+                barPath.setAttribute('fill', this.barColor[colorIndex]);
+                barPath.setAttribute('d', barPathOrder);
+                this.svg.appendChild(barPath);
+                // 更新位置
+                currentBarX += perBarWidth;
+                },this)
+                // 每个月数据绘制完成后
+                // 绘制横坐标刻度
+                var XText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                XText.setAttribute('stroke', this.axisColor);
+                XText.setAttribute('style', 'font-size:16px');
+                XText.innerHTML = `${monthIndex + 1}月`
+                XText.setAttribute('x', `${currentBarX - perMonthWidth/2}`);
+                XText.setAttribute('y', `${this.axisHeight+5}`);
+                this.svg.appendChild(XText);
+                // 更新起始位置
+                currentBarX += this.barSpace;
+            }, this);
+        }
+        // 按照地区聚合 和按照产品聚合原理一样
+        else {
+            // 聚合的柱体数量
+            var barNum;
+            var temp = '';
+            // 根据相同region名称计算数量
+            inputData.forEach(function (item, index) {
+                if(item.region !== temp) {
+                    barNum = 1;
+                    temp = item.region;
+                }
+                else {
+                    barNum++;
+                }
+            });
+            // 每个柱体的宽度
+            var perBarWidth = this.barWidth / barNum;
+            // 每个月数据总宽度
+            var perMonthWidth =  barNum * perBarWidth;
+            // 每个月数据间隔
+            var currentBarX = this.barSpace;
+            // 数据标签间隔
+            var dataLabelSpace = 20 ; 
+            // 挨着顺序画柱子加名称换颜色 每隔barNum个柱子就加间隔 重复12个月
+            inputData[0].sale.forEach(function(Item, monthIndex) {
+                inputData.forEach(function(item, index) {
+                // 每行数据的同一个月销售量
+                // 计算将要绘制柱子的高度和位置
+                var currentBarHeight = item.sale[monthIndex] * scale;
+                // 绘制数据标签 只画一次
                 if (monthIndex === 0) {
                     var dataLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                    dataLabel.setAttribute('stroke', this.barColor[colorIndex]);
+                    dataLabel.setAttribute('stroke', this.barColor[index]);
                     dataLabel.setAttribute('style', 'font-size:16px');
-                    dataLabel.innerHTML = `${preName}`
+                    dataLabel.innerHTML = `${item.product}`
                     dataLabel.setAttribute('x', `${dataLabelSpace += dataLabelSpace}`);
                     dataLabel.setAttribute('y', '20');
                     this.svg.appendChild(dataLabel);
                 }
-            }
-            // 绘制每一个柱子
-            var barPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            var barPathOrder = `M 25 ${this.axisHeight-10-1} m ${currentBarX} 0 v ${-currentBarHeight} h ${perBarWidth} v ${currentBarHeight}`;
-            barPath.setAttribute('fill', this.barColor[colorIndex]);
-            barPath.setAttribute('d', barPathOrder);
-            this.svg.appendChild(barPath);
-            // 更新位置
-            currentBarX += perBarWidth;
-            },this)
-            // 每个月数据绘制完成后
-            // 绘制横坐标刻度
-            var XText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            XText.setAttribute('stroke', this.axisColor);
-            XText.setAttribute('style', 'font-size:16px');
-            XText.innerHTML = `${monthIndex + 1}月`
-            XText.setAttribute('x', `${currentBarX - perMonthWidth/2}`);
-            XText.setAttribute('y', `${this.axisHeight+5}`);
-            this.svg.appendChild(XText);
-            // 更新起始位置
-            currentBarX += this.barSpace;
-        }, this);
-    }
-    // 按照地区聚合 和按照产品聚合原理一样
-    else {
-        // 聚合的柱体数量
-        var barNum;
-        var temp = '';
-        // 根据相同region名称计算数量
-        inputData.forEach(function (item, index) {
-            if(item.region !== temp) {
-                barNum = 1;
-                temp = item.region;
-            }
-            else {
-                barNum++;
-            }
-        });
-        // 每个柱体的宽度
-        var perBarWidth = this.barWidth / barNum;
-        // 每个月数据总宽度
-        var perMonthWidth =  barNum * perBarWidth;
-        // 每个月数据间隔
-        var currentBarX = this.barSpace;
-        // 数据标签间隔
-        var dataLabelSpace = 20 ; 
-        // 挨着顺序画柱子加名称换颜色 每隔barNum个柱子就加间隔 重复12个月
-        inputData[0].sale.forEach(function(Item, monthIndex) {
-            inputData.forEach(function(item, index) {
-            // 每行数据的同一个月销售量
-            // 计算将要绘制柱子的高度和位置
-            var currentBarHeight = item.sale[monthIndex] * scale;
-            // 绘制数据标签 只画一次
-            if (monthIndex === 0) {
-                var dataLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                dataLabel.setAttribute('stroke', this.barColor[index]);
-                dataLabel.setAttribute('style', 'font-size:16px');
-                dataLabel.innerHTML = `${item.product}`
-                dataLabel.setAttribute('x', `${dataLabelSpace += dataLabelSpace}`);
-                dataLabel.setAttribute('y', '20');
-                this.svg.appendChild(dataLabel);
-            }
-            // 绘制每一个柱子
-            var barPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            var barPathOrder = `M 25 ${this.axisHeight-10-1} m ${currentBarX} 0 v ${-currentBarHeight} h ${perBarWidth} v ${currentBarHeight}`;
-            barPath.setAttribute('fill', this.barColor[index]);
-            barPath.setAttribute('d', barPathOrder);
-            this.svg.appendChild(barPath);
-            // 更新位置
-            currentBarX += perBarWidth;
+                // 绘制每一个柱子
+                var barPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                var barPathOrder = `M 25 ${this.axisHeight-10-1} m ${currentBarX} 0 v ${-currentBarHeight} h ${perBarWidth} v ${currentBarHeight}`;
+                barPath.setAttribute('fill', this.barColor[index]);
+                barPath.setAttribute('d', barPathOrder);
+                this.svg.appendChild(barPath);
+                // 更新位置
+                currentBarX += perBarWidth;
+                }, this);
+                // 每个月数据绘制完成后
+                // 绘制横坐标刻度
+                var XText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                XText.setAttribute('stroke', this.axisColor);
+                XText.setAttribute('style', 'font-size:16px');
+                XText.innerHTML = `${monthIndex + 1}月`
+                XText.setAttribute('x', `${currentBarX - perMonthWidth/2}`);
+                XText.setAttribute('y', `${this.axisHeight+5}`);
+                this.svg.appendChild(XText);
+                // 更新起始位置
+                currentBarX += this.barSpace;
             }, this);
-            // 每个月数据绘制完成后
-            // 绘制横坐标刻度
-            var XText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            XText.setAttribute('stroke', this.axisColor);
-            XText.setAttribute('style', 'font-size:16px');
-            XText.innerHTML = `${monthIndex + 1}月`
-            XText.setAttribute('x', `${currentBarX - perMonthWidth/2}`);
-            XText.setAttribute('y', `${this.axisHeight+5}`);
-            this.svg.appendChild(XText);
-            // 更新起始位置
-            currentBarX += this.barSpace;
-        }, this);
+        }
     }
 }
