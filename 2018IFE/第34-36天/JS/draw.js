@@ -35,7 +35,8 @@ drawLineChart.prototype.drawLineByCanvas = function (inputData) {
     // 保存数据
     var data = inputData[0].sale.slice(0);
     // 拿到柱状图中的最大值Max
-    var maxData = data.sort((a, b)=>{return a-b}).pop();
+    // var maxData = data.sort((a, b)=>{return a-b}).pop();
+    var maxData = Math.max(...data)
     // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例
     // 减去一个数据点的直径，防止最大值数据点超出去
     var scale = (this.axisHeight - this.dataRadius*2)/maxData;
@@ -113,7 +114,8 @@ drawLineChart.prototype.drawMultiLineByCanvas = function (inputData) {
         });
     });
     // 拿到所有数据中的最大值Max
-    var maxData = data.sort((a, b)=>{return a-b}).pop();
+    // var maxData = data.sort((a, b)=>{return a-b}).pop();
+    var maxData = Math.max(...data);
     // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例this.
     // 减去一个数据点的直径，防止最大值数据点超出去
     var scale = (this.axisHeight - this.dataRadius*2)/maxData;
@@ -233,7 +235,8 @@ drawBarChart.prototype.drawBarBySvg = function (inputData) {
     // 保存数据
     var data = inputData[0].sale.slice(0);
     // 拿到柱状图中的最大值Max
-    var maxData = data.sort((a, b)=>{return a-b}).pop();
+    // var maxData = data.sort((a, b)=>{return a-b}).pop();
+    var maxData = Math.max(...data);
     // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例
     var scale = this.axisHeight/maxData;
     // 绘制横轴及纵轴
@@ -306,7 +309,8 @@ drawBarChart.prototype.drawMultiBarBySvg = function (inputData) {
         });
     });
     // 拿到所有数据中的最大值Max
-    var maxData = data.sort((a, b)=>{return a-b}).pop();
+    // var maxData = data.sort((a, b)=>{return a-b}).pop();
+    var maxData = Math.max(...data);
     // 根据Max和你用来绘制柱状图图像区域的高度，进行一个数据和像素的折算比例
     var scale = this.axisHeight/maxData;
     // 绘制横轴及纵轴
