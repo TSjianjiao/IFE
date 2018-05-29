@@ -32,7 +32,6 @@ var dataArr = objToArr(data);
 console.log(dataArr);
 // 显示列表
 displayData(dataArr);
-
 /**
  * i标签事件注册函数
  */                                        
