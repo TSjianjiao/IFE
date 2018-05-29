@@ -44,6 +44,17 @@ function checkBoxEvent(parentElement) {
                     // 就保持当前的选项为真
                     e.target.checked = true;
                 }
+                // 如果点击完成的时候有一个没有被选中
+                else if ([...this.querySelectorAll('input[check-type="option"]')].some(item => {
+                    return item.checked === false;
+                })) {
+                    // 就把全选置为没有被选中
+                    this.querySelector('input[check-type="all"]').checked = false;
+                }
+                else {
+                    // 就把全选置为没有被选中
+                    this.querySelector('input[check-type="all"]').checked = true;
+                }
             }
             // 把选择的项存入筛选数组
             if (this.id === 'region-radio-wrapper') {
