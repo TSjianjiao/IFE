@@ -75,9 +75,9 @@ function centerPop(width, height, pageX, pageY) {
     // 浏览器可视区域的宽度 高度
     var htmlWidth = html.clientWidth;
     var htmlHeight = html.clientHeight;
-    // 页面内容的 高度 宽度
-    var bodyWidth = body.clientWidth;
-    var bodyHeight = body.clientHeight;
+    // // 页面内容的 高度 宽度
+    // var bodyWidth = body.clientWidth;
+    // var bodyHeight = body.clientHeight;
     // 根据浏览器宽度 高度计算居中位置
     // 因为如果页面滚动 起始位置就发生了变化 所以需要同时用到可视区域和内容区域
     
