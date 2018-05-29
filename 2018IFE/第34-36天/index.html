@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FORM</title>
+    <link rel="stylesheet" href="./CSS/form.css">
+</head>
+<body>
+    <div class="text">
+        <i>>>>></i>鼠标离开的时候 多维柱状图被移到了下方<br>
+        因为12个月的数据实在是太多了，一行显示看不清楚<br>
+        <i>>>>></i>有个bug就是有的数据距离最大值太远了<br>
+        最后就贴在坐标轴上了，不知道怎么解决<br>
+        <i>>>>></i>没有给柱状图加上华东华南什么的标识，柱子太小了<br>
+        加上这些标识太乱了，而且数据都是排好序的<br>
+        不加也能看懂
+    </div>
+    <div id="region-radio-wrapper">
+        <input type="checkbox" check-type="option">华东
+        <input type="checkbox" check-type="option">华北
+        <input type="checkbox" check-type="option">华南
+        <input type="checkbox" check-type="all">全选
+    </div>
+    <div id="product-radio-wrapper">
+        <input type="checkbox" check-type="option">手机
+        <input type="checkbox" check-type="option">笔记本
+        <input type="checkbox" check-type="option">智能音箱
+        <input type="checkbox" check-type="all">全选
+    </div>
+    <div id="table-wrapper"></div>
+    <div id="visual">
+        <div id="canvas">
+            <canvas id="my-canvas" width="600" height="600"></canvas>
+        </div>
+        <svg version="1.1"
+            baseProfile="full"
+            width="500" height="500"
+            xmlns="http://www.w3.org/2000/svg" id="my-svg">
+        </svg>
+    </div>
+    <script src="./JS/ife31data.js"></script>
+    <script src="./JS/draw.js"></script>
+    <script src="./JS/form.js"></script>
+    <script src="./JS/visualization.js"></script>
+    <script src="./JS/main.js"></script>
+</body>
+</html>

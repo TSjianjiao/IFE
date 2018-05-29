@@ -1,0 +1,36 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+#region-radio-wrapper,
+#product-radio-wrapper,
+#table-wrapper {
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: solid 1px #000;
+}
+#table-wrapper {
+    border: none
+}
+tr,
+td {
+    border-bottom: solid 1px #000;
+    text-align: center;
+}
+#visual {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+td:not([table="head"]):hover {
+    cursor: pointer;
+}
+.text {
+    float: left;
+    font: 30px;
+}
+i {
+    color: #ff0000;
+}

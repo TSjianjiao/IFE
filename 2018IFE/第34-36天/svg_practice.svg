@@ -1,0 +1,19 @@
+<svg version="1.1"
+     baseProfile="full"
+     width="500" height="500"
+     xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" x2="100" y1="0" y2="100" stroke="blue"  stroke-width="2px"/>
+    <rect width="100" height="100" x="110" fill="blue"/>
+    <circle cx="270" cy="50" r="50" fill="#e3f"/>
+    <text style="font-size:20px;" x="0" y="150" stroke="#f00">
+    AAAAA
+    </text>
+    <circle cx="150" cy="150" r="50" fill="sandybrown"/>
+    <circle cx="200" cy="190" r="50" fill="sandybrown"/>
+    <circle cx="150" cy="240" r="50" fill="sandybrown"/>
+    <line x1="150" y1="290" x2="150" y2="450" stroke="green" stroke-width="10px"/>
+    <path d="M 145 300 A 50 30 0 0 0 145 360 m 10 0 a 50 30 0 0 1 0 50" fill="greenyellow"/>
+    <circle cx="100" cy="190" r="50" fill="sandybrown"/>
+    <circle cx="150" cy="190" r="10" fill="red"/>
+    <path d="M 300 150 l 80 -50 l 80 50 Z m 77 0 l -80 50 m 75 -50 l 80 50 h -160 m 80 0 l 80 50 h -160 m 80 0 v 100" fill="green" stroke="darkseagreen" stroke-width="10px">
+</svg>
