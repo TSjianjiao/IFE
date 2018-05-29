@@ -374,7 +374,7 @@ drawBarChart.prototype.drawMultiBarBySvg = function (inputData) {
         // 每个月数据间隔
         var currentBarX = this.barSpace;
         // 数据标签间隔
-        var dataLabelSpace = 20 ; 
+        var dataLabelSpace = 55 ; 
         // 挨着数据顺序画柱子  每隔barNum个柱子换颜色重置  每隔barNum * productNum重复12个月 加间隔
         // 第一层循环随便找了一个12个月的数据，仅仅是为了循环12次而已
         inputData[0].sale.forEach(function(Item, monthIndex) {
