@@ -24,8 +24,10 @@ td {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-td:not([table="head"]):hover {
+tr:not([table="head"]):hover {
     cursor: pointer;
+    background-color: #646161;
+    color: #fff;
 }
 .text {
     float: left;

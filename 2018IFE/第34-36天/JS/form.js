@@ -90,17 +90,17 @@ function checkBoxEvent(parentElement) {
             lineChart.axisWidth = 1300;
             lineChart.dataSpace = 85;
             // 设置颜色序列
-            lineChart.dataStrokeColor = ['#f74747', '#f39010', 
+            lineChart.dataStrokeColor = ['#3eeaf0', '#f39010', 
                                         '#c6f716', '#76fc5c', 
                                         '#1d8a34', '#1bdfae', 
                                         '#074d86', '#5e0786', 
                                         '#df1089']
-            lineChart.dataFillColor =  ['#f74747', '#f39010', 
+            lineChart.dataFillColor =  ['#3eeaf0', '#f39010', 
                                         '#c6f716', '#76fc5c', 
                                         '#1d8a34', '#1bdfae', 
                                         '#074d86', '#5e0786', 
                                         '#df1089']
-            lineChart.drawMultiLineByCanvas(data);
+            lineChart.drawLineByCanvas(data);
             // 设置柱状图大小
             barChart.svgWidth = 1300;
             barChart.axisWidth = 1300;
@@ -157,8 +157,10 @@ function displayData(data) {
     }
     tableObj.appendChild(headTr);
     // 主体数据
+    var index = 0;
     for (x of data) {
         var trObj = document.createElement('tr');
+        trObj.setAttribute('num', index);
         trObj.innerHTML = `<td>${x.product}</td><td>${x.region}</td>`;
         // 月份数据
         for (var i = 0; i < 12; i++) {
@@ -166,6 +168,7 @@ function displayData(data) {
             tdObj.innerHTML = `${x.sale[i]}`;
             trObj.appendChild(tdObj);
         }
+    index++;
     tableObj.appendChild(trObj);
     }
     tableWrapper.appendChild(tableObj);
