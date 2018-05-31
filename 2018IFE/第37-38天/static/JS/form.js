@@ -2,15 +2,6 @@
  * @file 表单部分
  */
 
-// var formData = require('./ife31data');
-//  module.exports = {
-//     checkBoxEvent:checkBoxEvent,
-//     myFilter:myFilter,
-//     displayData:displayData,
-//     sortData:sortData,
-//     mergeData:mergeData
-//  }
-
 // 记录选择
 var selectedProduct = [];
 var selectedRegion = [];
@@ -73,41 +64,7 @@ function checkBoxEvent(parentElement) {
                     }
                 }
             }
-            // 过滤数据
-            var data = myFilter(selectedProduct, selectedRegion);
-            // 给数据排序
-            // 让相同的单元挨在一起，方便合并
-            data = sortData(data, 'product');
-            // 显示数据
-            displayData(data);
-            // 合并单元
-            mergeData();
-            // 刷新图表
-            var lineChart = new drawLineChart();
-            var barChart = new drawBarChart();
-            // 设置折线图大小
-            lineChart.canvasWidth = 1300;
-            lineChart.axisWidth = 1300;
-            lineChart.dataSpace = 85;
-            // 设置颜色序列
-            lineChart.dataStrokeColor = ['#3eeaf0', '#f39010', 
-                                        '#c6f716', '#76fc5c', 
-                                        '#1d8a34', '#1bdfae', 
-                                        '#074d86', '#5e0786', 
-                                        '#df1089']
-            lineChart.dataFillColor =  ['#3eeaf0', '#f39010', 
-                                        '#c6f716', '#76fc5c', 
-                                        '#1d8a34', '#1bdfae', 
-                                        '#074d86', '#5e0786', 
-                                        '#df1089']
-            lineChart.drawLineByCanvas(data);
-            // 设置柱状图大小
-            barChart.svgWidth = 1300;
-            barChart.axisWidth = 1300;
-            barChart.barSpace = 25;
-            barChart.barWidth = 80;
-            barChart.barColor  = ['#c6f716', '#76fc5c', '#074d86'];
-            barChart.drawMultiBarBySvg(data);
+            formOp();
         }
     });
 }
@@ -117,7 +74,7 @@ function checkBoxEvent(parentElement) {
  * @param {array} product 
  * @param {arry} region 
  */
-function myFilter(product, region) {
+async function myFilter(product, region) {
     var myFilter = [];
     for(x of region) {
         for (k of product) {
@@ -127,16 +84,43 @@ function myFilter(product, region) {
             myFilter.push(filterItem);
         }
     }
+
     var data = [];
-    for (x in myFilter) {
-        // 过滤数据
-        data.push(sourceData.filter(function (item){
-            return item.product === myFilter[x].product && myFilter[x].region === item.region
-        }));
-    } 
-    return data
+    if (myFilter.length !== 0) {
+        for (x of myFilter) {
+            // 请求服务端 查询数据
+            // 等待requestByAjax返回Promise.resolve后再下一步
+            var temp = [];
+            // 为什么要套两层数组呢
+            // 因为我不知道为什么以前的代码使用的这种结构的
+            // 所以为了兼容其他函数 只能这样了
+            temp.push(await requestByAjax(x));
+            data.push(temp);
+        }
+    }
+    return new Promise ((resolve, rejects)=>{resolve(data)})
 }
 
+/**
+ * ajax请求服务端
+ * @param {object} request 
+ */
+function requestByAjax(request) {
+    return new Promise ((resolve, rejects)=>{
+        var xhr = new XMLHttpRequest;
+        xhr.open('POST', '/data');
+        // 设置请求头
+        xhr.setRequestHeader('content-Type', 'application/Json');
+        // 发送内容应该为字符串格式
+        xhr.send(JSON.stringify(request));
+        xhr.onreadystatechange = function () {
+            if(this.readyState === 4) {
+                // 响应内容是字符串要转化
+                resolve(JSON.parse(xhr.responseText));
+            }
+        }
+    })
+}
 /**
  * 显示数据
  * @param {array} data 
@@ -180,7 +164,6 @@ function displayData(data) {
  * @param {string} basedOn
  */
 function sortData(data, basedOn) {
-    console.log(data)
     var output = [];
     for (x of data) {
         output.push(x[0]);
@@ -244,4 +227,51 @@ function mergeData() {
 
         }
     }
+}
+
+/**
+ * 异步 表单的各种操作
+ */
+async function formOp() {
+    var data = []; 
+    // 过滤数据 查询数据库
+    data = await myFilter(selectedProduct, selectedRegion);
+    // 给数据排序
+    // 让相同的单元挨在一起，方便合并
+    data = sortData(data, 'product');
+    // 存储数据到本地  减少ajax请求
+    data.forEach((item, index)=>{
+        item = JSON.stringify(item);
+        localStorage.setItem(index, item);
+    });
+    // 显示数据
+    displayData(data);
+    // 合并单元
+    mergeData();
+    // 刷新图表
+    var lineChart = new drawLineChart();
+    var barChart = new drawBarChart();
+    // 设置折线图大小
+    lineChart.canvasWidth = 1300;
+    lineChart.axisWidth = 1300;
+    lineChart.dataSpace = 85;
+    // 设置颜色序列
+    lineChart.dataStrokeColor = ['#3eeaf0', '#f39010', 
+                                '#c6f716', '#76fc5c', 
+                                '#1d8a34', '#1bdfae', 
+                                '#074d86', '#5e0786', 
+                                '#df1089']
+    lineChart.dataFillColor =  ['#3eeaf0', '#f39010', 
+                                '#c6f716', '#76fc5c', 
+                                '#1d8a34', '#1bdfae', 
+                                '#074d86', '#5e0786', 
+                                '#df1089']
+    lineChart.drawLineByCanvas(data);
+    // 设置柱状图大小
+    barChart.svgWidth = 1300;
+    barChart.axisWidth = 1300;
+    barChart.barSpace = 25;
+    barChart.barWidth = 80;
+    barChart.barColor  = ['#c6f716', '#76fc5c', '#074d86'];
+    barChart.drawMultiBarBySvg(data);
 }

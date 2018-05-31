@@ -1,0 +1,25 @@
+{
+  "name": "TSjianjiao.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TSjianjiao/TSjianjiao.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TSjianjiao/TSjianjiao.github.io/issues"
+  },
+  "homepage": "https://github.com/TSjianjiao/TSjianjiao.github.io#readme",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.3"
+  }
+}
