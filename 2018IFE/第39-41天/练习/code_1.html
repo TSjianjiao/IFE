@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <div id="cont"></div>
+    <script>
+        // var bodyObj = document.getElementsByTagName('body')[0];
+        // var display = document.getElementById('cont');
+        // bodyObj.addEventListener('click', (e)=>{
+        //     if ('A' <= e.target.id && e.target.id <= 'C') {
+        //         location.hash = `#${e.target.innerText}`
+        //         display.innerText = location.hash.replace('#', '');
+        //     }
+        // });
+        // display.innerText = location.hash.replace('#', '');
+
+        // state
+        var bodyObj = document.getElementsByTagName('body')[0];
+        var display = document.getElementById('cont');
+        display.innerText = location.hash.replace('#', '');
+        bodyObj.addEventListener('click', (e)=>{
+            if ('a' <= e.target.id && e.target.id <= 'c') {
+                history.pushState({id:e.target.innerText}, null, `#${e.target.innerText}`)
+                display.innerText = e.target.innerText;
+            }
+        });
+        window.onpopstate = (e)=>{
+            if (e.state) display.innerText = e.state.id;
+        }
+    </script>
+</body>
+</html>

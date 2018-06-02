@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    
+    <button id="d">D</button>
+    <button id="e">E</button>
+    <button id="f">F</button>
+    
+    
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+        
+
+    <script>
+        // var bodyObj = document.getElementsByTagName('body')[0];
+        // var displayA = document.getElementById('contABC');
+        // var displayD = document.getElementById('contDEF');
+        // // 刷新的时候重新显示
+        // displayA.innerHTML = location.hash.replace('#', '').slice(0, 1);
+        // displayD.innerHTML = location.hash.replace('#', '').slice(1);
+        // bodyObj.addEventListener('click', (e)=>{
+        //     if (e.target.id >= 'a' && e.target.id <= 'c') {
+        //         location.hash = `#${e.target.innerText}`;  
+        //         displayA.innerHTML = location.hash.replace('#', '');  
+        //     }
+        //     else if (e.target.id >= 'd' && e.target.id <= 'f') {
+        //         location.hash = `#${e.target.innerText}`;
+        //         displayD.innerHTML = location.hash.replace('#', '');
+        //     }
+        // });
+        // // 变成#AF 方便刷新的时候重新赋值
+        // window.onhashchange = ()=>{location.hash = `#${displayA.innerHTML}${displayD.innerHTML}`};
+        
+        var bodyObj = document.getElementsByTagName('body')[0];
+        var displayA = document.getElementById('contABC');
+        var displayD = document.getElementById('contDEF');
+        // 刷新的时候重新显示
+        displayA.innerHTML = location.hash.replace('#', '').slice(0, 1);
+        displayD.innerHTML = location.hash.replace('#', '').slice(1);
+        bodyObj.addEventListener('click', (e)=>{
+            if (e.target.id >= 'a' && e.target.id <= 'c') {
+                displayA.innerHTML = e.target.innerText;
+            }
+            else if (e.target.id >= 'd' && e.target.id <= 'f') {
+                displayD.innerHTML = e.target.innerText;
+            }
+            history.pushState({A:displayA.innerHTML,D:displayD.innerHTML}, null, `#${displayA.innerHTML}${displayD.innerHTML}`);
+        });
+        window.onpopstate = (e)=>{
+            displayA.innerHTML = e.state.A;
+            displayD.innerHTML = e.state.D;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FORM</title>
+    <link rel="stylesheet" href="/static/CSS/form.css">
+    <script>
+        // window.onerror = ()=>{return true}
+    </script>
+</head>
+<body>
+    <div class="text">
+        <em>></em>这一个月学到的所有前端知识<br>
+        <em>></em>也算是一个总结吧<br>
+        <em>></em>只能下载到本地再打开<br>
+        <em>></em>mongoDB+node.js<br>
+        <em>></em>ajax请求多了点 可能会卡<br>
+    </div>
+    <div id="region-radio-wrapper">
+        <input type="checkbox" check-type="option" id="1">华东
+        <input type="checkbox" check-type="option" id="2">华北
+        <input type="checkbox" check-type="option" id="3">华南
+        <input type="checkbox" check-type="all" id="4">全选
+    </div>
+    <div id="product-radio-wrapper">
+        <input type="checkbox" check-type="option" id="5">手机
+        <input type="checkbox" check-type="option" id="6">笔记本
+        <input type="checkbox" check-type="option" id="7">智能音箱
+        <input type="checkbox" check-type="all" id="8">全选
+    </div>
+    <div id="table-wrapper"></div>
+    <div id="visual">
+        <div id="canvas">
+            <canvas id="my-canvas" width="600" height="600"></canvas>
+        </div>
+        <svg version="1.1"
+            baseProfile="full"
+            width="500" height="500"
+            xmlns="http://www.w3.org/2000/svg" id="my-svg">
+        </svg>
+    </div>
+    <script src="/static/JS/ife31data.js"></script>
+    <script src="/static/JS/draw.js"></script>
+    <script src="/static/JS/form.js"></script>
+    <script src="/static/JS/visualization.js"></script>
+    <script src="/static/JS/edit.js"></script>
+    <script src="/static/main.js"></script>
+</body>
+</html>
