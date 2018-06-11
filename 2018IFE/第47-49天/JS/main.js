@@ -90,6 +90,7 @@ async function opening (queue) {
     let customerList = [...queue];
     // 记录客人吃完了几样菜
     let customerDone = [];
+    waiter_1.dom.createWaiter();
     while (restaurant.seats > 0 
         && restaurant.cash > 0 
         && restaurant.staffList.length > 0 
@@ -97,7 +98,6 @@ async function opening (queue) {
         console.log(customerList)
         // 入座
         console.log('哟！老板来了，快请坐！')
-        waiter_1.dom.createWaiter();
         restaurant.seats -= 1;
         let curretCustomer = customerList.shift();
         // 队列减一
