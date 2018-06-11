@@ -140,6 +140,8 @@ async function opening (queue) {
             }
             // 等待所有吃饭异步操作完成
             await Promise.all(promiseList);
+            waiter_1.dom.byCustomer(curretCustomer.dom.seatIndex);
+            await delay(500)
             const bill = curretCustomer.payBill();
             restaurant.dom.updateCash(restaurant.cash = restaurant.cash + (bill - cost))
             // 腾出空位

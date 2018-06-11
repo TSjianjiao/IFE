@@ -72,8 +72,8 @@ let id = 1;//id暂时这样
         }
         else {
             let position = this.dom.byCook('pass', cook);
-            cook.dom.removeState(); 
             this.dom.waiterDom.setAttribute('style', `left:${position.left}px;top:${position.top}px`);
+            cook.dom.removeState(); 
             await delay(500);
             this.dom.byCustomer(order.index);
             await delay(500);
