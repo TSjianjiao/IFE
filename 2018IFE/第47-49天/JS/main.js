@@ -127,15 +127,15 @@ async function opening (queue) {
                 let meal = await cook_1._doneWork(order[x]);
                 mealList.push(meal);
                 // 通知上菜
-                await waiter_1._doneWork({
+                waiter_1._doneWork({
                     meal,
                     index:curretCustomer.dom.seatIndex
                 }, cook_1);
-                waiter_1.dom.undo();
                 // 补时间 具体原理不赘述了
                 meal.takeTime > 3 ? addTime=0 : addTime=Number(3 - meal.takeTime);
                 // 异步操作放入数组
                 await delay(300)
+                waiter_1.dom.undo();
                 if (x === '0') promiseList.push(curretCustomer._eat(meal))
                 else promiseList.push(curretCustomer._eat(meal, addTime))
             }

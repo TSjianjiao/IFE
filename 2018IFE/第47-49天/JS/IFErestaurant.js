@@ -73,11 +73,11 @@ let id = 1;//id暂时这样
         else {
             let position = this.dom.byCook('pass', cook);
             this.dom.waiterDom.setAttribute('style', `left:${position.left}px;top:${position.top}px`);
-            await delay(500); 
             cook.dom.removeState(); 
+            await delay(500);
             this.dom.byCustomer(order.index);
+            await delay(500);
             console.log(">>>>>进行上菜<<<<<")
-            await delay(500); 
             return order.meal
         }
     }
