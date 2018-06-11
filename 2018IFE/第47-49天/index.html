@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFErestaurant</title>
+    <script src="./JS/iconfont.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <style type="text/css">
+        .icon {
+           width: 70px; height: 70px;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <p>程序只写了一个座位</p>
+    <button>餐厅，启动！</button>
+    <span class="cash">￥0</span>
+    <div class="main-content">
+        <!-- 厨房 -->
+        <div class="kitchen">
+        </div>
+        <!-- 吃饭区域 -->
+        <div class="dining-area">
+            <div class="dining-area-1 area" empty index='1'>
+            </div>
+            <div class="dining-area-2 area" empty index='2'>
+    
+            </div>
+            <div class="dining-area-3 area" empty index='3'>
+    
+            </div>
+            <div class="dining-area-4 area" empty index='4'>
+    
+            </div>
+        </div>
+
+        <div class="customer-queue" id="customer-queue">
+            <!-- 顾客队列 -->
+        </div>
+    </div>
+    <script src="./JS/IFErestaurant.js"></script>
+    <script src="./JS/dom.js"></script>
+    <script src="./JS/main.js"></script>
+</body>
+</html>

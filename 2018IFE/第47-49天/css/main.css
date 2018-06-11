@@ -1,0 +1,76 @@
+li {
+    list-style: none;
+    font-size: 16px;
+}
+.main-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    height: 500px;
+    margin: 0 auto;
+    border: solid 2px #000;
+}
+/* 厨房部分 */
+.kitchen {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin-top: 100px;
+    border: solid 2px #000;
+    border-left: none;
+    overflow: hidden;
+}
+.cook {
+    /* position: absolute; */
+}
+.cook-list {
+    width: 60px;
+    border: solid 1px #000;
+    border-top: none;
+    overflow: hidden;
+}
+.cook-state {
+    width: 60px;
+    border: solid 1px #000;
+    border-top: none;
+    overflow: hidden;
+}
+/* 顾客队伍 */
+.customer-queue {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100px;
+    border-left: solid 2px #000;
+    overflow: hidden;
+}
+/* 吃饭地点 */
+.dining-area {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 2px #000;
+    height: 300px;
+    width: 500px;
+    /* margin-left: 200px; */
+    margin-top: 100px;
+}
+.area {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+    border: solid 2px #000;
+}
+.waiter {
+    position: absolute;
+    transition: all .5s ease-out;
+}
+.customer-state {
+    width: 60px;
+    border: solid 1px #000;
+    border-top: none;
+    overflow: hidden;
+}
