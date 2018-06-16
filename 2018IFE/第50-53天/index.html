@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFErestaurant</title>
+    <script src="./JS/iconfont.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <style type="text/css">
+        .icon {
+           width: 70px; height: 70px;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <button id="addWaiter">服务员 +1</button>
+    <button id="addCook">厨师 +1</button>
+    <button id="Go">Restaurant Go!</button>
+    <span class="cash">￥0</span>
+    <p style="display: float-left">
+        没写开除和菜单合并<br>
+        毕业太忙（太懒<br>
+        <a href="./description/description.html">说明</a>
+    </p>
+    <div class="main-content">
+        <!-- 厨房 -->
+        <div class="kitchen" id="kitchen">
+            <div class="to-do-list" id="toDoList"></div>
+        </div>
+        <!-- 吃饭区域 -->
+        <div class="dining-area">
+            <div class="dining-area-1 area" empty index='1'>
+            </div>
+            <div class="dining-area-2 area" empty index='2'>
+    
+            </div>
+            <div class="dining-area-3 area" empty index='3'>
+    
+            </div>
+            <div class="dining-area-4 area" empty index='4'>
+    
+            </div>
+        </div>
+
+        <div class="customer-queue" id="customer-queue">
+            <!-- 顾客队列 -->
+        </div>
+    </div>
+    <script src="./JS/IFErestaurant.js"></script>
+    <script src="./JS/InformationCenter.js"></script>
+    <script src="./JS/dom.js"></script>
+    <script src="./JS/main.js"></script>
+</body>
+</html>
