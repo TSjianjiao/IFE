@@ -1,0 +1,16 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+.player {
+    position: absolute;
+    border: solid 1px #000;
+    border-radius: 50%;
+    background-color: #000;
+}
+#container {
+    position: relative;
+    border: solid 2px #000;
+    margin: 0 auto;
+}
