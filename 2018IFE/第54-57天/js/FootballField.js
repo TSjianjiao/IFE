@@ -108,7 +108,7 @@ class Player extends FootballField{
         // 设置球员数据
         this.speed = Math.floor(Math.random() * 110);
         this.maxSpeed = Math.floor(3 + (this.speed - 1) * ( 9 / 98 ));
-        this.explosiveness = Math.floor(Math.random() * 110);
+        this.explosiveness = Math.floor(Math.random()) * 110;
         this.toMaxSpeed = Math.floor((3 / 98) * (1 - this.explosiveness) + 4);
         this.strength = Math.floor(Math.random() * 110);
         this.keepSpeed = Math.floor((5 / 98) * (this.strength - 1) + 10);
@@ -116,31 +116,40 @@ class Player extends FootballField{
     /**
      * 奔跑
      */
-    run({x=0,y=0}={}) {
+    run({to_x = 0, to_y = 0} = {}) {
         const SCALE = Number(this.field.scale);
         const RADIUS = Math.ceil(this.radius * SCALE);
         // 总的距离 用x方向作参考
-        const X = Math.floor(x * SCALE);
-        const Y = Math.floor(y * SCALE);
-        console.log(this.id, X, Y)
-        const ACC = Math.floor(this.maxSpeed / this.toMaxSpeed);
+        const X = Math.floor(to_x * SCALE);
+        const Y = Math.floor(to_y * SCALE);
+        const ACC = this.maxSpeed / this.toMaxSpeed;
         // 到达最大速度时，跑过的距离
-        const DISTANCE_1 = Math.floor(this.maxSpeed * this.toMaxSpeed * SCALE / 2);
+        const DISTANCE_1 = Math.floor(this.maxSpeed * this.toMaxSpeed / 2);
         // 匀速阶段 距离
-        const DISTANCE_2 = Math.floor(this.maxSpeed * this.keepSpeed * SCALE);
+        const DISTANCE_2 = Math.floor(this.maxSpeed * this.keepSpeed);
         let time;
-        if(DISTANCE_1 > X) {
+        const x = Number(to_x);
+        if(DISTANCE_1 >= x) {
             // 总时间
-           time = Math.floor(Math.sqrt(2 * X / ACC));
+           time = Math.floor(Math.sqrt(2 * x / ACC));
         }
-        else if (DISTANCE_1 < X && X < DISTANCE_2) {
-            const LEFT = X - DISTANCE_1;
-           time = Math.floor(this.toMaxSpeed + LEFT / DISTANCE_2);
-
+        else if (DISTANCE_1 < x && x < DISTANCE_2) {
+            const LEFT = x - DISTANCE_1;
+            time = Math.floor(this.toMaxSpeed + LEFT / this.toMaxSpeed);
         }
         else {
-           time = this.toMaxSpeed + this.keepSpeed + 0.5;
+            time = this.toMaxSpeed + this.keepSpeed + 1;
         }
+        console.log(this.id, 
+            `x:${x}`,
+            `scale:${SCALE}`, 
+            `maxSpeed:${this.maxSpeed}`,
+            `toMaxSpeed:${this.toMaxSpeed}`,
+            `keep:${this.keepSpeed}`,
+            `ACC:${ACC}`, 
+            `DISTANCE_1:${DISTANCE_1}`, 
+            `DISTANCE_2:${DISTANCE_2}`, 
+            `time:${time}`)
         // 更新位置
         this.x = X + Number(this.origin.x);
         this.y = Y + Number(this.origin.y);

@@ -30,12 +30,8 @@ let player_4 = new createPlayer(filed, {
     y:30
 });
 document.getElementById('go').addEventListener('click', ()=>{
-    console.log(player_1.id, player_1.x, player_1.y);
-    console.log(player_2.id, player_2.x, player_2.y);
-    console.log(player_3.id, player_3.x, player_3.y);
-    console.log(player_4.id, player_4.x, player_4.y);
-    player_1.run({x: 60, y:45});
-    player_2.run({x: 60, y:40});
-    player_3.run({x: 60, y:35});
-    player_4.run({x: 60, y:30});
+    player_1.run({to_x: 120, to_y:45});
+    player_2.run({to_x: 120, to_y:40});
+    player_3.run({to_x: 120, to_y:35});
+    player_4.run({to_x: 120, to_y:30});
 });
