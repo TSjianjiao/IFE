@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./assert/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>World Cup</title>
+</head>
+<body>
+    <div id="container">
+        <div id="target-ball" class="target">X</div>
+        <div id="target-player" class="target">X</div>
+        <div id="target-player-2" class="target">O</div>
+        <canvas id="my-canvas"></canvas>
+    </div>
+    <!-- 数据调整 -->
+    <div style="position:absolute; top: 30px; left: 10px">
+        <!-- <button id="kick">球员1踢球</button> -->
+        <button id="kick-1">球员0踢球</button>
+        <!-- <button id="chasing">球员1去球旁</button> -->
+        <button id="withBallKick">球员0带球运动提出球</button>
+        <!-- <button id="chasingKick">球员1发球 球员1追球踢球</button> -->
+        <button id="run">球员0跑</button><br>
+        <button id="ball-move">指定球移动</button>
+        <button id="chasing-kick">跑向球然后踢出</button>
+        <button id="chasing-1">球员0去球旁</button><br>
+
+        <label for="ballAngleInput"> 球角度调整 </label>
+        <input type="range" max="360" step="1" defaultValue="0"  id="ballAngleInput">
+        <span id="ballAngle"></span><br>
+
+        <label for="playerAngleInput"> 球员0角度调整 </label>
+        <input type="range" max="360" step="1" defaultValue="0"  id="playerAngleInput">
+        <span id="playerAngle"></span><br>
+        <!-- <label for="playerAngleInput2"> 球员1角度调整 </label>
+        <input type="range" max="360" step="1" defaultValue="0"  id="playerAngleInput2">
+        <span id="playerAngle2"></span><br> -->
+
+        <label for="playerX"> 0队员位置X </label>
+        <input type="range" max="120" step="1" defaultValue="0"  id="playerX">
+        <span id="playerXP"></span><br>
+        <label for="playerY"> 0队员位置Y </label>
+        <input type="range" max="90" step="1" defaultValue="0"  id="playerY">
+        <span id="playerYP"></span><br>
+
+        <!-- <label for="playerX2"> 1队员位置X </label>
+        <input type="range" max="120" step="1" defaultValue="0"  id="playerX2">
+        <span id="playerXP2"></span><br>
+        <label for="playerY2"> 1队员位置Y </label>
+        <input type="range" max="90" step="1" defaultValue="0"  id="playerY2">
+        <span id="playerYP2"></span><br> -->
+
+        <label for="ballX"> 球位置X </label>
+        <input type="range" max="120" step="1" defaultValue="0"  id="ballX">
+        <span id="ballXP"></span><br>
+        <label for="ballY"> 球位置Y </label>
+        <input type="range" max="90" step="1" defaultValue="0"  id="ballY">
+        <span id="ballYP"></span><br>
+
+        <label for="playerSpeed">队员0速度</label>
+        <input type="range" max="99" step="1" defaultValue="1"  min="1" id="playerSpeed">
+        <span id="playerSp"></span><br>
+        <label for="playerExplosiveness">队员0爆发</label>
+        <input type="range" max="99" step="1" defaultValue="1"  min="1" id="playerExplosiveness">
+        <span id="playerEx"></span><br>
+        <label for="playerStrength"> 队员0体质</label>
+        <input type="range" max="99" step="1" defaultValue="1"  min="1" id="playerStrength">
+        <span id="playerSt"></span><br>
+        <label for="playerTech"> 队员0技巧</label>
+        <input type="range" max="99" step="1" defaultValue="1"  min="1" id="playerTech">
+        <span id="playerTec"></span><br>
+        <label for="playerPower"> 队员0力量</label>
+        <input type="range" max="99" step="1" defaultValue="1"  min="1" id="playerPower">
+        <span id="playerPow"></span><br>
+
+        <a href="./explain.html">说明</a>
+
+    </div>
+    <script src="./js/animate.js"></script>
+    <script src="./js/InformationCenter.js"></script>
+    <script src="./js/FootballField.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border: solid 1px #000;
+    border-radius: 50%;
+    background-color: #fff461;
+}
+.ball {
+    position: absolute;
+    border-radius: 50%;
+    background: url(../assert/ball.png);
+}
+#container {
+    position: relative;
+    border: solid 2px #000;
+    margin: 0 auto;
+}
+.target {
+    color: #000
+}
